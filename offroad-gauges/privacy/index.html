@@ -25,6 +25,9 @@
        margin:2.2em 0 .5em; color:var(--green); }
   a { color:var(--amber); }
   li { margin:.4em 0; }
+  .callout { background:#EFE7D0; border:1px solid var(--line); border-left:4px solid var(--amber);
+             border-radius:10px; padding:4px 20px 16px; margin:1.6em 0; }
+  .callout h2 { margin-top:1.2em; }
   footer { border-top:1px solid var(--line); color:var(--muted);
            font-size:.85rem; padding:20px 24px 48px; text-align:center; }
 </style>
@@ -37,72 +40,146 @@
 <main>
 <p><strong>Effective date:</strong> 20 August 2026
 <strong>Developer:</strong> APE Studios
-<strong>Contact:</strong> isabellmaister@gmail.com
+<strong>Contact:</strong> <a href="mailto:apestudios.io@gmail.com">apestudios.io@gmail.com</a>
 <strong>Published at:</strong> https://ape-studio.github.io/legal/offroad-gauges/privacy/</p>
 <p>Offroad Gauges is a gauge cluster for off-road driving: tilt dials, compass, speed,
 altitude, and optional trip recording. This policy describes what the app
 does with your data.</p>
-<p>The short version: <strong>your location and your recorded trips stay on your
-device.</strong> We do collect anonymous information about the app itself — that it
-was installed, what kind of phone it is on, and which screens get used — so
-we can tell whether the app works. None of that identifies you, and none of
-it is your location.</p>
+<p>The short version: <strong>if you do not sign in, your location and your recorded
+trips stay on your device.</strong> If you do sign in, your recorded trips —
+including their routes — are backed up to our database so they come back on a
+new phone, and nothing else changes. We also collect anonymous information
+about the app itself — that it was installed, what kind of phone it is on,
+and which screens get used — so we can tell whether the app works. None of
+that is your location.</p>
+<p>Signing in is optional. The app offers "continue as guest", and a guest's
+drives are never uploaded.</p>
+
+<div class="callout" id="delete">
+<h2>How to delete your account and your data</h2>
+<p>There are two ways, and either one erases everything we hold for you — your
+account, every trip backed up to it, and the record of this install.</p>
+<p><strong>In the app.</strong> Profile → the gear → <strong>Account</strong> →
+<strong>Delete my account</strong>. It asks once to be sure, and then it is done
+immediately. Trips saved on the phone itself stay on the phone; you can delete
+those from the Trips tab.</p>
+<p><strong>By email, if you no longer have the app.</strong> Write to
+<a href="mailto:apestudios.io@gmail.com">apestudios.io@gmail.com</a> from the
+address you signed in with and ask us to delete your account. You do not need a
+reason, and you do not need to reinstall anything. We will confirm when it is
+done.</p>
+<p>If you used the app as a guest we may be unable to find your record from an
+email alone, because a guest record is not linked to any address — that is a
+consequence of collecting as little as we do, not a refusal. Uninstalling ends a
+guest record permanently in any case.</p>
+</div>
+
 <h2>What stays on your device</h2>
 <p><strong>Precise location (GPS).</strong> Used while the app is open to display speed,
 altitude, and heading, and — only when you start a recording — to build the
 route of a trip. Also used to work out the sun's position for the sunset
 readout and the automatic day/night theme.</p>
-<p><strong>Your trips never leave the phone.</strong> Recorded trips, including their routes,
-are written to the app's own private storage. We cannot see them, and there
-is no copy anywhere else.</p>
+<p><strong>Your trips, if you have not signed in.</strong> Recorded trips, including their
+routes, are written to the app's own private storage. As a guest there is no
+copy anywhere else, and we cannot see them. Signing in changes this — see
+<strong>Trip backup</strong> below.</p>
 <p><strong>Your settings never leave the phone</strong>, including the approximate last
 position the sunset calculation needs.</p>
-<p><strong>Uninstalling the app deletes all of it.</strong> Individual trips can be deleted
+<p><strong>Uninstalling the app deletes all of it</strong> — unless you have signed in, in
+which case see <strong>Your account</strong> below. Individual trips can be deleted
 at any time from the Trips tab.</p>
+
+<h2>Trip backup (only if you sign in)</h2>
+<p>If you sign in with Google or Apple, each drive you record is uploaded to our
+database and stored against your account, so that reinstalling the app or
+moving to a new phone brings your drives back.</p>
+<p><strong>What a backed-up trip contains:</strong> the route itself — the sequence of GPS
+coordinates the drive followed — along with its start and end time, distance,
+duration, speeds, tilt figures, altitude, and any name you gave it.</p>
+<p><strong>A route is location data</strong>, and this is the one place the app sends your
+location to us. We say so plainly because the rest of this policy says we do
+not, and both are true depending on whether you sign in.</p>
+<p><strong>What it is used for:</strong> giving your drives back to you, and nothing else. It
+is not used for advertising or profiling, is not sold, and is not shared with
+data brokers. No one but you can read your trips: the database enforces, per
+row, that a trip is readable only by the account that recorded it.</p>
+<p><strong>How to avoid it entirely:</strong> continue as guest. Guests get the whole app —
+every gauge, the map, trip recording, trophies — with no upload of any kind.</p>
+<p><strong>How to delete it.</strong> Deleting a trip in the app deletes it from the database
+too. Deleting your account deletes every trip stored against it, along with
+everything else we hold for you — see <a href="#delete">How to delete your account
+and your data</a>.</p>
+<p><strong>Signing out</strong> stops further uploads and leaves the drives on your phone.
+Trips already backed up stay in the database against that account until you
+delete them or delete the account.</p>
+
+<h2>Your account (only if you sign in)</h2>
+<p>Signing in is optional and the app works fully without it. If you choose
+<strong>Continue with Google</strong> or <strong>Continue with Apple</strong>, we hold:</p>
+<ul>
+<li><strong>Your email address</strong>, so the account can be recognised as yours on a new
+  phone. If you use Apple's <strong>Hide My Email</strong>, Apple gives us a relay address
+  instead of your real one, and that relay is all we ever see.</li>
+<li><strong>Whatever else your provider includes when it signs you in</strong>, which for
+  Google is typically your display name and the web address of your profile
+  picture. We do not ask for these separately; they arrive inside the sign-in
+  token and are stored with the account.</li>
+</ul>
+<p>That is the whole of it. We do not receive your password, your contacts, or
+anything else from your Google or Apple account, and we never post anything.</p>
+<p><strong>Signing in also makes your identity outlive the install</strong> — that is its
+purpose. Uninstalling no longer erases everything: your account and the trips
+backed up against it stay until you delete them.</p>
+
 <h2>What we collect</h2>
 <p>All of this is about the app, not about you. It is sent over an encrypted
-connection to our own database and to Google Analytics for Firebase.</p>
+connection to our own database, and nowhere else.</p>
 <p><strong>An anonymous install identifier.</strong> When you first open the app it signs
-itself in anonymously and receives a random identifier. It is not linked to
-your name, email, phone number, Google account, or advertising ID — we
-cannot use it to work out who you are, and neither can anyone else. It
-exists so that two app openings can be recognised as the same install rather
-than two different ones. <strong>It is created and destroyed with the install:
-uninstalling the app ends it permanently.</strong></p>
+itself in anonymously and receives a random identifier. Until and unless you
+sign in it is not linked to your name, email, phone number, Google account,
+or advertising ID — we cannot use it to work out who you are, and neither can
+anyone else. It exists so that two app openings can be recognised as the same
+install rather than two different ones. <strong>For a guest it is created and
+destroyed with the install: uninstalling the app ends it permanently.</strong> If you
+sign in, this same identifier becomes your account and stops being
+disposable — see <strong>Your account</strong> above.</p>
 <p><strong>Basic device and app information</strong>, attached to that identifier: your
 phone's model, its Android version, the version of Offroad Gauges you are
-running, your language and region, and your Offroad Gauges settings (metric or
-imperial, day or night theme).</p>
+running, your language and region, your Offroad Gauges settings (metric or
+imperial, day or night theme), and the vehicle make and model you pick — which
+is a choice from a fixed list, not free text, and which you can skip.</p>
 <p><strong>How the app is used.</strong> Anonymous events recording which screens you reach
 and which actions you take — for example that a trip was recorded, that the
 Pro screen was shown, or that a trophy was earned. These carry no
 coordinates, no route data, and no trip names.</p>
 <p><strong>Whether you subscribed</strong>, as a yes/no. Payment details are handled
 entirely by Google Play and never reach us.</p>
+
 <h2>What we deliberately do not collect</h2>
 <ul>
-<li><strong>Your location, to us.</strong> No coordinates, no routes, and no trip data are
-  ever sent to our database, and none of it goes into analytics, advertising,
-  or any data broker. The one exception is unavoidable and is not us: to
-  <em>draw</em> a map, the Google Maps SDK must ask Google for the map of the area
-  you are looking at, and on the Map tab that area is where you are. See
-  Google Maps SDK below. Turning to a different tab stops it; nothing about
-  the gauges, the sunset readout, or trip recording needs it.</li>
-<li><strong>Your identity.</strong> No account, no email address, no name, no phone number,
-  no contacts.</li>
+<li><strong>Your location, in analytics.</strong> No coordinates, no routes and no trip
+  names ever go into our analytics events, into advertising, or to any data
+  broker. Routes reach our database only through the trip backup described
+  above, only for signed-in accounts, and only to be handed back to you. A
+  second exception is unavoidable and is not us: to <em>draw</em> a map, the Google
+  Maps SDK must ask Google for the map of the area you are looking at, and on
+  the Map tab that area is where you are. See Google Maps SDK below. Turning to
+  a different tab stops it; nothing about the gauges, the sunset readout, or
+  trip recording needs it.</li>
+<li><strong>Your identity, unless you sign in.</strong> As a guest we hold no account, no
+  email address and no name for you, and we never ask for one. If you do
+  sign in, we hold what your provider hands us — see <strong>Your account</strong> above.
+  Your phone number and your contacts we never collect either way.</li>
 <li><strong>Your advertising ID</strong>, and no advertising or tracking networks. Offroad
   Gauges shows no ads and does not sell or share data with data brokers.</li>
 <li><strong>Your photos, files, microphone, or camera.</strong></li>
 </ul>
+
 <h2>Third parties</h2>
-<p>Four Google services are involved. Their handling of the data described here
-is governed by Google's own privacy policy:
-https://policies.google.com/privacy</p>
+<p>Four Google services are involved. Their handling of the data described
+here is governed by Google's own privacy policy:
+<a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></p>
 <ul>
-<li><strong>Google Analytics for Firebase</strong> — receives the anonymous usage events
-  and device information described above. It assigns its own anonymous app
-  instance identifier, which is likewise created and destroyed with the
-  install.</li>
 <li><strong>Google Maps SDK</strong> — draws the Map tab, the map behind trip cards, and
   the map on a shared trip image. Drawing a map means asking Google for that
   map, so the area being viewed is sent to Google. On the Map tab that area
@@ -114,20 +191,33 @@ https://policies.google.com/privacy</p>
   never sees or stores payment information.</li>
 <li><strong>Google Play</strong> — if you tap the rate prompt, it opens the app's Play Store
   listing.</li>
+<li><strong>Sign in with Google</strong> — only if you choose it. Google shows the account
+  chooser, and tells us which account you picked so we can create or find
+  your account. Google learns that you signed in to Offroad Gauges.</li>
 </ul>
+<p><strong>Apple</strong> is involved only if you choose <strong>Continue with Apple</strong>. The sign-in
+happens on Apple's own web page, opened in your browser; Apple tells us which
+account signed in, and learns that you signed in to Offroad Gauges. Apple's
+handling is governed by their privacy policy:
+<a href="https://www.apple.com/legal/privacy/">https://www.apple.com/legal/privacy/</a></p>
+<p>Choosing "continue as guest" involves neither of them.</p>
 <p>Our own database is hosted by <strong>Supabase</strong> (supabase.com), which stores the
-install record described above on our behalf and does not use it for its own
-purposes.</p>
+install record, the anonymous usage events, your account and — if you are
+signed in — your backed-up trips, on our behalf and does not use any of it
+for its own purposes.</p>
+
 <h2>Sharing a trip</h2>
 <p>Sharing a trip card creates an image containing that trip's route and
 statistics and hands it to the app you choose. That image goes wherever you
 send it. Nothing is shared unless you tap Share and pick a destination, and
 no copy reaches us.</p>
+
 <h2>Permissions</h2>
 <ul>
 <li><strong>Location (precise)</strong> — the gauges and trip recording, as described above.
-  Your position is never transmitted to us. It reaches Google only as the
-  viewport of a map you are looking at.</li>
+  As a guest your position is never transmitted to us; it reaches Google only
+  as the viewport of a map you are looking at. If you sign in, the routes of
+  the trips you record are uploaded to us as described under <strong>Trip backup</strong>.</li>
 <li><strong>Foreground service (location)</strong> — keeps a recording running while the
   screen is off during a drive. The app does <strong>not</strong> request background
   location access, and does not record when you have not started a trip.</li>
@@ -135,35 +225,53 @@ no copy reaches us.</p>
   recording. Declining it only hides that notification.</li>
 <li><strong>Internet</strong> — required by the Google and Supabase services listed above.</li>
 </ul>
+
 <h2>Children</h2>
 <p>Offroad Gauges is not directed at children. We do not knowingly collect personal
 information from anyone, including children.</p>
+
 <h2>Your rights</h2>
-<p>Your trips, routes, and settings are yours alone and never reach us, so
-there is nothing on our side to export or correct — delete individual trips
-in the app, or uninstall to remove everything.</p>
-<p>For the anonymous install record we do hold:</p>
+<p><strong>As a guest</strong>, your trips, routes and settings are yours alone and never
+reach us, so there is nothing on our side to export or correct — delete
+individual trips in the app, or uninstall to remove everything. For the
+anonymous install record we do hold:</p>
 <ul>
 <li><strong>Deleting the app deletes it.</strong> Uninstalling ends the anonymous identifier
   permanently. We keep no way to link a future install to a past one.</li>
-<li><strong>You can ask us to erase it sooner.</strong> Email isabellmaister@gmail.com
-  from the device in question and we will delete the record and the
-  identifier behind it.</li>
+<li><strong>You can ask us to erase it sooner.</strong> Email
+  <a href="mailto:apestudios.io@gmail.com">apestudios.io@gmail.com</a> from the device
+  in question and we will delete the record and the identifier behind it.</li>
 </ul>
-<p>Because the identifier is anonymous by design, we may be unable to locate a
-specific record from an email alone — which is a consequence of collecting
+<p>Because a guest identifier is anonymous by design, we may be unable to locate
+a specific record from an email alone — which is a consequence of collecting
 as little as we do, not a refusal.</p>
+<p><strong>If you are signed in</strong>, we hold your account and your backed-up trips, and
+uninstalling no longer removes them. You can:</p>
+<ul>
+<li><strong>Delete individual trips</strong> in the app; each one is deleted from the
+  database too.</li>
+<li><strong>Sign out</strong>, which stops further uploads and leaves your drives on the
+  phone. What is already backed up stays until you delete it or delete the
+  account.</li>
+<li><strong>Delete your account and everything in it</strong> — every trip, the account
+  record, and the install record behind it — from inside the app or by email.
+  See <a href="#delete">How to delete your account and your data</a>.</li>
+<li><strong>Ask for a copy</strong> of what we hold for you, at the same address.</li>
+</ul>
+
 <h2>Data retention</h2>
 <p>Install records are kept while the install exists and for up to 24 months
-after it stops being seen, then deleted. Analytics events follow Google's
-retention settings for Analytics for Firebase.</p>
+after it stops being seen, then deleted. Usage events are attached to the
+install record and are deleted with it.</p>
+
 <h2>Changes</h2>
 <p>Material changes to this policy will be posted here with an updated
 effective date, and, where required, announced in the app's Play Store
 listing.</p>
+
 <h2>Contact</h2>
-<p>isabellmaister@gmail.com</p>
+<p><a href="mailto:apestudios.io@gmail.com">apestudios.io@gmail.com</a></p>
 </main>
-<footer>© 2026 APE Studios · isabellmaister@gmail.com</footer>
+<footer>© 2026 APE Studios · apestudios.io@gmail.com</footer>
 </body>
 </html>
