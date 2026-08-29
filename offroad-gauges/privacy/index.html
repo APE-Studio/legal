@@ -38,7 +38,7 @@
   <p>Offroad Gauges — APE Studios</p>
 </div></header>
 <main>
-<p><strong>Effective date:</strong> 20 August 2026
+<p><strong>Effective date:</strong> 29 August 2026
 <strong>Developer:</strong> APE Studios
 <strong>Contact:</strong> <a href="mailto:apestudios.io@gmail.com">apestudios.io@gmail.com</a>
 <strong>Published at:</strong> https://ape-studio.github.io/legal/offroad-gauges/privacy/</p>
@@ -90,7 +90,7 @@ which case see <strong>Your account</strong> below. Individual trips can be dele
 at any time from the Trips tab.</p>
 
 <h2>Trip backup (only if you sign in)</h2>
-<p>If you sign in with Google or Apple, each drive you record is uploaded to our
+<p>If you sign in with Google, each drive you record is uploaded to our
 database and stored against your account, so that reinstalling the app or
 moving to a new phone brings your drives back.</p>
 <p><strong>What a backed-up trip contains:</strong> the route itself — the sequence of GPS
@@ -115,18 +115,17 @@ delete them or delete the account.</p>
 
 <h2>Your account (only if you sign in)</h2>
 <p>Signing in is optional and the app works fully without it. If you choose
-<strong>Continue with Google</strong> or <strong>Continue with Apple</strong>, we hold:</p>
+<strong>Continue with Google</strong>, we hold:</p>
 <ul>
 <li><strong>Your email address</strong>, so the account can be recognised as yours on a new
-  phone. If you use Apple's <strong>Hide My Email</strong>, Apple gives us a relay address
-  instead of your real one, and that relay is all we ever see.</li>
+  phone.</li>
 <li><strong>Whatever else your provider includes when it signs you in</strong>, which for
   Google is typically your display name and the web address of your profile
   picture. We do not ask for these separately; they arrive inside the sign-in
   token and are stored with the account.</li>
 </ul>
 <p>That is the whole of it. We do not receive your password, your contacts, or
-anything else from your Google or Apple account, and we never post anything.</p>
+anything else from your Google account, and we never post anything.</p>
 <p><strong>Signing in also makes your identity outlive the install</strong> — that is its
 purpose. Uninstalling no longer erases everything: your account and the trips
 backed up against it stay until you delete them.</p>
@@ -154,6 +153,14 @@ Pro screen was shown, or that a trophy was earned. These carry no
 coordinates, no route data, and no trip names.</p>
 <p><strong>Whether you subscribed</strong>, as a yes/no. Payment details are handled
 entirely by Google Play and never reach us.</p>
+<p><strong>Crash reports.</strong> If Offroad Gauges crashes, it records the type of error,
+a single line identifying where in our own code it happened, and whether it
+happened on the main thread — and sends that with the same anonymous
+identifier as everything above, the next time you have a connection. We
+deliberately do <strong>not</strong> record the error's message text, because an error
+message can quote things you typed, such as the name you gave a trip. The
+report tells us that a release is broken and roughly where; it tells us
+nothing about where you drove.</p>
 
 <h2>What we deliberately do not collect</h2>
 <ul>
@@ -195,12 +202,7 @@ here is governed by Google's own privacy policy:
   chooser, and tells us which account you picked so we can create or find
   your account. Google learns that you signed in to Offroad Gauges.</li>
 </ul>
-<p><strong>Apple</strong> is involved only if you choose <strong>Continue with Apple</strong>. The sign-in
-happens on Apple's own web page, opened in your browser; Apple tells us which
-account signed in, and learns that you signed in to Offroad Gauges. Apple's
-handling is governed by their privacy policy:
-<a href="https://www.apple.com/legal/privacy/">https://www.apple.com/legal/privacy/</a></p>
-<p>Choosing "continue as guest" involves neither of them.</p>
+<p>Choosing "continue as guest" involves Google not at all.</p>
 <p>Our own database is hosted by <strong>Supabase</strong> (supabase.com), which stores the
 install record, the anonymous usage events, your account and — if you are
 signed in — your backed-up trips, on our behalf and does not use any of it
@@ -272,6 +274,6 @@ listing.</p>
 <h2>Contact</h2>
 <p><a href="mailto:apestudios.io@gmail.com">apestudios.io@gmail.com</a></p>
 </main>
-<footer>© 2026 APE Studios · apestudios.io@gmail.com</footer>
+<footer><a href="../terms/">Terms of Service</a> · © 2026 APE Studios · apestudios.io@gmail.com</footer>
 </body>
 </html>
