@@ -38,15 +38,16 @@
   <p>Bob: Cynic Travel Guide — APE Studios</p>
 </div></header>
 <main>
-<p><strong>Effective date:</strong> 1 September 2026
+<p><strong>Effective date:</strong> 5 September 2026
 <strong>Developer:</strong> APE Studios
 <strong>Contact:</strong> <a href="mailto:apestudios.io@gmail.com">apestudios.io@gmail.com</a>
 <strong>Published at:</strong> https://ape-studio.github.io/legal/bob/privacy/</p>
 <p>Bob is a travel guide: a map, a button, and a narrator who tells you about
 the places around you with a dry sense of humour. This policy describes what
 the app does with your data.</p>
-<p>The short version: <strong>your location is used to show you a map and to find
-places near you, and it is never stored as any kind of history.</strong> Signing in
+<p>The short version: <strong>your location is used to show you a map, to find
+places near you and, on a walk you start, to notice when you reach the next
+stop — and it is never stored as any kind of history.</strong> Signing in
 is optional — as a guest we hold nothing about you at all. If you sign in
 with Apple, we get your email address and, once, your name — and nothing
 else. There are no ads, no analytics, no trackers, and no data brokers
@@ -94,15 +95,21 @@ Apple Account.</p>
 
 <h2>Your location</h2>
 <p>Location is what makes Bob work, so here is exactly where it goes. The app
-uses your position <strong>only while you are using it</strong> — it never requests
-background location, and it never records where you have been.</p>
+uses your position <strong>while you are using it</strong>, and — only during a
+"Cynic Road" walk that you started — <strong>while the screen is locked</strong>, so
+narration can begin on its own when you reach each stop. That tracking
+starts when you start a walk, stops when the walk ends or you end it, and
+never records where you have been. iOS shows its location indicator the
+whole time it is on. The app never asks for "always" location access.</p>
 <ul>
 <li><strong>To Apple</strong>, to draw the map. The map is Apple Maps, and drawing a map
   means asking Apple for the area you are looking at — which, when the map is
   centred on you, amounts to your approximate position. Apple also tells the
   app which country the map is in, so the narrator can speak like a local.
-  This is governed by Apple's privacy policy, not ours; we get nothing from
-  it.</li>
+  On a walk, the app also asks Apple for walking directions between your
+  position and the stops, and a search you type in the "Where to?" box is
+  sent to Apple's map search together with the area around you. This is
+  governed by Apple's privacy policy, not ours; we get nothing from it.</li>
 <li><strong>To Wikipedia</strong> (the Wikimedia Foundation), to find places. When you tap
   the button, the app sends your coordinates to Wikipedia's public search API
   and gets back the nearby places it knows about. Wikipedia receives the
@@ -171,8 +178,11 @@ Settings under your name → Subscriptions.</p>
 
 <h2>Permissions</h2>
 <ul>
-<li><strong>Location (while using the app)</strong> — the map and nearby search, as
-  described above. Never in the background.</li>
+<li><strong>Location (while using the app)</strong> — the map, nearby search and
+  walk planning, as described above. During a walk you started, position
+  updates continue with the screen locked (iOS's "background location" mode)
+  purely to trigger narration at each stop; they end with the walk. The app
+  never requests "always" access.</li>
 <li><strong>Background audio</strong> — narration keeps playing with the screen locked.
   This is playback only; it involves no data and no microphone.</li>
 <li><strong>Internet</strong> — required by the services listed above.</li>
