@@ -38,7 +38,7 @@
   <p>Bob: Cynic Travel Guide — APE Studios</p>
 </div></header>
 <main>
-<p><strong>Effective date:</strong> 5 September 2026
+<p><strong>Effective date:</strong> 13 September 2026
 <strong>Developer:</strong> APE Studios
 <strong>Contact:</strong> <a href="mailto:apestudios.io@gmail.com">apestudios.io@gmail.com</a>
 <strong>Published at:</strong> https://ape-studio.github.io/legal/bob/privacy/</p>
@@ -108,12 +108,11 @@ whole time it is on. The app never asks for "always" location access.</p>
   centred on you, amounts to your approximate position. Apple also tells the
   app which country the map is in, so the narrator can speak like a local.
   On a walk, the app also asks Apple for walking directions between your
-  position and the stops, and a search you type in the "Where to?" box is
-  sent to Apple's map search together with the area around you. This is
-  governed by Apple's privacy policy, not ours; we get nothing from it.</li>
-<li><strong>To Wikipedia</strong> (the Wikimedia Foundation), to find places. When you tap
-  the button, the app sends your coordinates to Wikipedia's public search API
-  and gets back the nearby places it knows about. Wikipedia receives the
+  position and the stops. This is governed by Apple's privacy policy, not
+  ours; we get nothing from it.</li>
+<li><strong>To Wikipedia</strong> (the Wikimedia Foundation), to find places. As you move the
+  map, the app sends the coordinates of the area shown to Wikipedia's public
+  search API and gets back the nearby places it knows about. Wikipedia receives the
   coordinates the way any website receives a request; it does not know who
   you are.</li>
 <li><strong>To our own database</strong>, to check for hand-prepared guides. The app asks
@@ -137,9 +136,17 @@ the cloud:</p>
 <li>What is sent is the place, never you: these requests carry <strong>no account
   identity</strong>, no email, and no device identifier. OpenAI processes the text
   to produce the result and is not permitted to use it for advertising.</li>
-<li>The <strong>on-device voice mode</strong> (the default) speaks with the iPhone's own
+<li>For the places we have prepared by hand, the narration and its audio are
+  made once, in advance, and stored on our server — playing one of those sends
+  nothing to OpenAI at all.</li>
+<li>The cloud voice is the default. The <strong>on-device voice mode</strong>,
+  which you can pick in the app's settings, speaks with the iPhone's own
   synthesizer — in that mode, nothing about the narration leaves your phone
   except the Wikipedia lookups above.</li>
+<li>To keep the narration service from being abused, our server counts how
+  many requests each internet address makes in a rolling hour. Those counters
+  hold the address and a number, are not linked to any account, and are
+  deleted within a day.</li>
 </ul>
 
 <h2>Subscriptions and payment</h2>
