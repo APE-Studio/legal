@@ -1,0 +1,17 @@
+.DS_Store
+
+# This repo is PUBLIC and served at ape-studio.github.io/legal.
+# Anything committed here is published immediately, so the secret rules matter
+# more here than anywhere else, even though nothing secret belongs in it.
+.env
+.env.*
+!.env.example
+**/GoogleService-Info.plist
+**/google-services.json
+**/SupabaseConfig.plist
+*.p8
+*.p12
+*.pem
+*.mobileprovision
+*.keystore
+*.jks
