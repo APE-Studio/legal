@@ -38,7 +38,7 @@
   <p>Offroad Gauges — APE Studios</p>
 </div></header>
 <main>
-<p><strong>Effective date:</strong> 13 September 2026<br>
+<p><strong>Effective date:</strong> 26 October 2026<br>
 <strong>Developer:</strong> APE Studios<br>
 <strong>Contact:</strong> <a href="mailto:apestudios.io@gmail.com">apestudios.io@gmail.com</a><br>
 <strong>Published at:</strong> <a href="https://ape-studio.github.io/legal/offroad-gauges/privacy/">https://ape-studio.github.io/legal/offroad-gauges/privacy/</a></p>
@@ -168,6 +168,22 @@ lapses, is cancelled or refunded, so that Pro is switched on and off
 correctly. This is how a purchase made on one phone is recognised on
 another. <strong>Payment details — cards, billing addresses — are handled entirely
 by Google Play or the App Store and never reach us.</strong></p>
+<p><strong>On Android, Pro goes through RevenueCat.</strong> The Android app uses
+<strong>RevenueCat</strong> (revenuecat.com), a subscription service that acts on our
+behalf as our processor, to load the Pro offer, check whether you have Pro,
+and record a purchase. RevenueCat receives an app user ID — a random ID if
+you are a guest, or our identifier for your account if you signed in, so Pro
+follows your account to a new phone — plus the app version, device model,
+Android version and language, your Google Play country and currency, the IP
+address any internet request carries, and, when you buy or restore, the
+purchase record Google Play issues: which plan, the price, trial and renewal
+dates, and Google's purchase token. It never receives your email, your name,
+your location or your payment details, and it is not used for advertising or
+tracking. Even if you never buy anything, the app contacts RevenueCat when it
+starts, to load the Pro offer. RevenueCat keeps the record while the purchase
+exists and as long as needed for accounting. Its privacy policy:
+<a href="https://www.revenuecat.com/privacy/">https://www.revenuecat.com/privacy/</a>.
+On iPhone the app still talks to the App Store directly.</p>
 <p><strong>Crash reports.</strong> If Offroad Gauges crashes, it records the type of error,
 a single line identifying where in our own code it happened, and whether it
 happened on the main thread — and sends that with the same anonymous
@@ -202,6 +218,9 @@ and the map service only as the viewport of a map you look at.</p>
 install record, the anonymous usage events, your account and — if you are
 signed in — your backed-up trips, on our behalf and does not use any of it
 for its own purposes.</p>
+<p>On Android, <strong>RevenueCat</strong> (revenuecat.com) checks and records your Pro
+purchase on our behalf, as described under <strong>What we collect</strong>, and does not
+use it for its own purposes or for advertising.</p>
 
 <h2>Sharing a trip</h2>
 <p>Sharing a trip card creates an image containing that trip's route and
@@ -215,7 +234,7 @@ no copy reaches us.</p>
 <li><strong>Recording with the screen off</strong> — a recording you started keeps running while the screen is locked, so the route is not cut short mid-drive. On Android this is a foreground service with its ongoing notification; on iPhone it is the location background mode, and iPhone shows its own indicator while it runs. Neither version asks for "always" location access, and neither records when you have not started a trip.</li>
 <li><strong>Motion sensors</strong> (iPhone asks; Android does not) — the pitch and roll dials. Readings never leave the phone.</li>
 <li><strong>Notifications</strong> (Android) — shows the ongoing notification while a trip is recording. Declining it only hides that notification.</li>
-<li><strong>Internet</strong> — required by the map, store, sign-in and Supabase services listed above.</li>
+<li><strong>Internet</strong> — required by the map, store, sign-in, RevenueCat and Supabase services listed above.</li>
 </ul>
 
 <h2>Children</h2>
@@ -241,6 +260,8 @@ uninstalling no longer removes them. You can:</p>
 <li><strong>Sign out</strong>, which stops further uploads and leaves your drives on the phone. What is already backed up stays until you delete it or delete the account.</li>
 <li><strong>Delete your account and everything in it</strong> — every trip, the account record, and the install record behind it — by emailing <a href="mailto:apestudios.io@gmail.com">apestudios.io@gmail.com</a>. We do not need a reason, and because a signed-in account has an email address we can find it.</li>
 <li><strong>Ask for a copy</strong> of what we hold for you, at the same address.</li>
+<li><strong>Ask us to delete your purchase record at RevenueCat</strong>, at the same
+  address. Guests can ask too.</li>
 </ul>
 
 <h2>Data retention</h2>
