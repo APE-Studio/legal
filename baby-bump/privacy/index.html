@@ -38,7 +38,7 @@
   <p>Bump — APE Studios</p>
 </div></header>
 <main>
-<p><strong>Effective date:</strong> 22 October 2026<br>
+<p><strong>Effective date:</strong> [date of the release with app events]<br>
 <strong>Developer:</strong> APE Studios<br>
 <strong>Contact:</strong> <a href="mailto:apestudios.io@gmail.com">apestudios.io@gmail.com</a><br>
 <strong>Published at:</strong> <a href="https://ape-studio.github.io/legal/baby-bump/privacy/">https://ape-studio.github.io/legal/baby-bump/privacy/</a></p>
@@ -48,18 +48,21 @@ day, a clock that counts weeks and days, and a way to look back. It runs on
 iPhone.</p>
 
 <p>The short version: <strong>photos stay on this phone. They are not uploaded.
-They leave only when you tap Share or Save to Photos.</strong> There is no account, no sign-in,
-and no server of ours that ever receives a photo, a date or anything else
-about you. If you subscribe to Bump Pro, Apple handles the payment and
-RevenueCat keeps an anonymous record of it (see Subscriptions below); no
-photo or date is ever part of that.</p>
+They leave only when you tap Share or Save to Photos.</strong> There is no account and no sign-in,
+and no server of ours ever receives a photo, a date, your due date or your
+name. The app does record how it is used (which screens you open, that you
+added a photo in week 12, that you made a comparison, and errors) under a
+random ID that is not linked to you, so we can fix problems and see what to
+build next — see App events below. If you subscribe to Bump Pro, Apple
+handles the payment and RevenueCat keeps an anonymous record of it (see
+Subscriptions below); no photo or date is ever part of either.</p>
 
 <div class="callout" id="photos">
 <h2>Photos on your device</h2>
 <p>Every photo you take or import in Bump is saved as a file
 inside the app on this phone. It is not uploaded to us or to anyone else.
-We have no server that could receive it, and no account that could be
-tied to it.</p>
+Our database never receives a photo, and there is no account that could
+be tied to one.</p>
 <p><strong>Your iPhone backup.</strong> Because the photos are ordinary app data, they
 are included when your iPhone backs itself up to iCloud or to a computer,
 the same as any other app. That backup is between you and Apple; we never
@@ -94,9 +97,44 @@ label your photos and the home screen.</p>
 itself. Nothing is sent anywhere to make a reminder fire.</p>
 
 <h2>What we collect</h2>
-<p>No photos, no dates, no name, no email, no account. The app has no
-analytics, no crash reporting and no advertising, and we run no servers of
-our own. The one exception is the subscription record described below.</p>
+<p>No photos, no dates, no name, no email, no account, no advertising. Two
+things leave the phone: the app events described next, and the subscription
+record described under Subscriptions.</p>
+
+<h2>How the app is used (app events)</h2>
+<p>While you use Bump, the app writes short records of what happens in it and
+sends them, in small batches, to our database. If you are offline they wait
+on the phone and are sent later. Each record holds:</p>
+<ul>
+<li><strong>What happened</strong>: for example "opened the album", "went to
+  the next intro card", "added 3 photos from the library, weeks 10 to 12",
+  "deleted a photo in week 14", "switched the album to weeks", "made a
+  comparison 8 weeks apart", "turned reminders on", "opened the app from a
+  reminder", "opened the subscription screen". Weeks are pregnancy week
+  numbers; the rough stage you pick in the intro (for example "second
+  trimester") and how you set the clock (last period, due date or weeks now)
+  are recorded, never the date itself.</li>
+<li><strong>Errors</strong>: where something went wrong in the app and a short
+  error code (never the error text, which can contain file names).</li>
+<li><strong>Technical context</strong>: the app version and build, the iOS
+  version, the iPhone model, the time, and two random IDs the app makes
+  itself: one for this install of the app and one for each time you open
+  it.</li>
+</ul>
+<p>These records <strong>never contain a photo, any part of a photo, a file
+name, your last-period date, your due date, your name, your email, your
+location or anything you type</strong>. The random install ID is not linked
+to you or to any other ID (not to RevenueCat's ID either), and it changes if
+you delete and reinstall the app. Like any request on the internet, sending
+them shows our server your IP address; we do not store it with the
+records.</p>
+<p><strong>Why:</strong> to find and fix problems and to see which parts of the
+app people use (for example whether people come back for a second weekly
+photo), so we know what to improve. We do not use them for advertising, we
+do not sell them, and we do not combine them with data from other
+companies.</p>
+<p><strong>Where and how long:</strong> in our database at Supabase, in the
+European Union (Frankfurt), for up to two years, then they are deleted.</p>
 
 <h2>Subscriptions (Bump Pro)</h2>
 <p>Bump Pro is optional. Apple takes the payment through your Apple ID; we
@@ -117,13 +155,16 @@ Pro is active, using the same random ID.</p>
 
 <h2>If you are in the EEA, the UK or Switzerland</h2>
 <p>We (APE Studios, operated by Isabel Maister) are the controller of the
-subscription record; RevenueCat processes it for us as our processor, in
-the United States, under its data processing terms and the EU Standard
-Contractual Clauses. Our legal basis is performing the contract you enter
-when you subscribe (unlocking and restoring Pro) and our legitimate
-interest in anonymous sales totals. You may object, ask for access or
-deletion (see Your rights), and complain to your data protection
-authority.</p>
+app events and the subscription record. Supabase stores the app events for
+us as our processor, in the EU (Frankfurt). RevenueCat processes the
+subscription record for us as our processor, in the United States, under its
+data processing terms and the EU Standard Contractual Clauses. Our legal
+basis for the app events is our legitimate interest in fixing problems and
+improving the app, using records that carry no name, date or photo. For the
+subscription record it is performing the contract you enter when you
+subscribe (unlocking and restoring Pro) and our legitimate interest in
+anonymous sales totals. You may object, ask for access or deletion (see Your
+rights), and complain to your data protection authority.</p>
 
 <h2>What we deliberately do not do</h2>
 <ul>
@@ -131,6 +172,7 @@ authority.</p>
 <li><strong>No automatic saving to your Camera Roll.</strong> A photo reaches your Photos library only when you tap Save to Photos on it.</li>
 <li><strong>No iCloud Photos as the source of truth.</strong> The app reads its own files, not your library.</li>
 <li><strong>No Files app sharing.</strong> The album folder is not exposed to the Files app or to other apps.</li>
+<li><strong>No dates, names or photos in app events.</strong> Only week numbers, counts and which button or screen.</li>
 <li><strong>No advertising, no tracking, no advertising ID, no data brokers.</strong></li>
 <li><strong>No health data.</strong> The app does not read or write Apple Health.</li>
 </ul>
@@ -149,8 +191,12 @@ the App Store, under Apple's privacy policy
 (<a href="https://www.apple.com/legal/privacy/">https://www.apple.com/legal/privacy/</a>).
 RevenueCat handles the subscription record, as described above
 (<a href="https://www.revenuecat.com/privacy/">https://www.revenuecat.com/privacy/</a>).
-No other company is involved. The only network requests the app makes are
-to Apple and RevenueCat, for the subscription.</p>
+Supabase (<a href="https://supabase.com/privacy">https://supabase.com/privacy</a>)
+hosts our database, where the app events are stored; it stores them on our
+behalf and does not use them for its own purposes. No other company is
+involved. The only network requests the app makes are to Apple and
+RevenueCat, for the subscription, and to our Supabase database, for the app
+events.</p>
 
 <h2>Children</h2>
 <p>Bump is made for adults who are pregnant. It is not directed
@@ -158,14 +204,16 @@ at children, and we do not knowingly collect personal information from
 anyone, including children.</p>
 
 <h2>Your rights</h2>
-<p>Everything the app holds is on your phone and under your control. Delete
+<p>Your photos and dates are on your phone and under your control. Delete
 a single photo in the app, delete the whole album from Settings, or
-uninstall. The only thing held off your phone is the anonymous
-subscription record above. Because it carries no name or email, we can
+uninstall. The app events are not linked to you, so we cannot find yours on
+request; deleting and reinstalling the app starts a new random ID with no
+link to the old one. The only other thing held off your phone is the
+anonymous subscription record above. Because it carries no name or email, we can
 only find yours from the order ID in Apple's receipt email: send it to us
 and we will ask RevenueCat to show or delete that record (deleting it does
 not cancel the subscription — Apple handles that). There is nothing else
-on our side to export, correct or erase. You are always welcome to write to <a href="mailto:apestudios.io@gmail.com">apestudios.io@gmail.com</a> with any question.</p>
+on our side that we could find, export, correct or erase. You are always welcome to write to <a href="mailto:apestudios.io@gmail.com">apestudios.io@gmail.com</a> with any question.</p>
 
 <h2>Changes</h2>
 <p>Material changes to this policy will be posted here with an updated
