@@ -38,7 +38,7 @@
   <p>Bob: Cynic Travel Guide — APE Studios</p>
 </div></header>
 <main>
-<p><strong>Effective date:</strong> 25 October 2026
+<p><strong>Effective date:</strong> [date of the release with app events]
 <strong>Developer:</strong> APE Studios
 <strong>Contact:</strong> <a href="mailto:apestudios.io@gmail.com">apestudios.io@gmail.com</a>
 <strong>Published at:</strong> https://ape-studio.github.io/legal/bob/privacy/</p>
@@ -48,17 +48,21 @@ the app does with your data.</p>
 <p>The short version: <strong>your location is used to show you a map, to find
 places near you and, on a walk you start, to notice when you reach the next
 stop — and it is never stored as any kind of history.</strong> Signing in
-is optional — as a guest we hold nothing about you at all. If you sign in
-with Apple, we get your email address and, once, your name — and nothing
-else. There are no ads, no analytics, no trackers, and no data brokers
-anywhere in this app.</p>
+is optional — as a guest we hold no account, no email and no name for you.
+If you sign in with Apple, we get your email address and, once, your name —
+and nothing else. There are no ads, no trackers, and no data brokers
+anywhere in this app. The app does record how it is used — which screens
+you open, which map layers you switch, whether a walk finishes — so we can
+see what works. That record never contains your name, your email or where
+you are.</p>
 
 <div class="callout" id="delete">
 <h2>How to delete your account and your data</h2>
-<p>This applies if you signed in — a guest has no account to delete, and
-nothing of a guest exists on our side in the first place. There are two ways,
-and either one erases everything we hold for you — your account and the
-profile stored with it.</p>
+<p>This applies if you signed in — a guest has no account to delete, and the
+only thing of a guest on our side is the anonymous usage record described
+under <a href="#usage">How the app is used</a>. There are two ways, and either
+one erases your account and the profile stored with it. Your usage record is
+kept, but it is no longer linked to you in any way.</p>
 <p><strong>In the app.</strong> The person button at the top right of the map →
 the gear → <strong>Account</strong> →
 <strong>Delete my account</strong>. The app asks you to confirm with Apple one more
@@ -77,8 +81,10 @@ Apple created — that is the address we know you by.</p>
 
 <h2>Your account (only if you sign in)</h2>
 <p>Signing in is optional — the app offers "continue as guest", and a guest
-gets the app without any account existing anywhere: we hold no identifier,
-no email, and no name for you, and we never ask for one.</p>
+gets the app without any account existing anywhere: we hold no account, no
+email and no name for you, and we never ask for one — only the anonymous
+usage record described under <a href="#usage">How the app is used</a>, tied to
+a random number the app makes when it is installed.</p>
 <p>If you choose to sign in with Apple, Apple shows its own sheet, you approve
 with Face ID, and this is what we end up holding:</p>
 <ul>
@@ -149,6 +155,37 @@ the cloud:</p>
   deleted within a day.</li>
 </ul>
 
+<h2 id="usage">How the app is used</h2>
+<p>To find out which parts of Bob people use and where it breaks, the app
+keeps a short record of what happens in it and sends it, in small batches,
+to our own database (Supabase, the same one that holds accounts). If you are
+offline the record waits on the phone and is sent later. Each entry holds:</p>
+<ul>
+<li><strong>What you did</strong>: the screen you opened, the step of the
+  introduction you reached, the map layer you switched, the kind of pin you
+  tapped (a place, a venue, an event) and how long its card stayed open, that
+  Bob's voice played and whether it failed, which of the cities Bob covers the
+  map is showing (for example "Tel Aviv"), a walk started, a stop reached, a
+  walk finished, the subscription screen shown or closed, a purchase or
+  restore that went through or did not, and signing in, signing out or
+  deleting your account.</li>
+<li><strong>Errors</strong>: where something went wrong and a short technical
+  description of the error.</li>
+<li><strong>Technical context</strong>: the time, the app version and build, the
+  iOS version, the iPhone model, a random install number the app creates the
+  first time it opens, a random number for each time you use it, and, only if
+  you are signed in, your account ID.</li>
+</ul>
+<p>It <strong>never contains your name, your email, your coordinates, the
+places you looked at or visited, or anything you typed</strong>. Like any request
+on the internet, sending it shows our server your IP address; we do not store
+the address with the record.</p>
+<p>It is not shared with anyone, not sold, not used for advertising, and not
+combined with data from other companies. If you delete your account, the
+record stays but is no longer linked to it. Deleting the app removes the
+install number with it. We keep the record for [how long — set before
+publishing], then delete it.</p>
+
 <h2>Subscriptions and payment</h2>
 <p>Bob's subscription is bought through Apple's App Store. Apple processes the
 payment entirely: <strong>we never see or store your payment details</strong>. The
@@ -178,10 +215,13 @@ load the subscription offer.</p>
 
 <h2>What we deliberately do not collect</h2>
 <ul>
-<li><strong>No location history.</strong> Nothing you look at, tap, or listen to is stored
-  against you or anyone.</li>
-<li><strong>No analytics and no trackers.</strong> The app contains no analytics SDK, no
-  advertising ID collection, no ads, and no crash-reporting service.</li>
+<li><strong>No location history.</strong> Where you are, and which places you look at,
+  tap or listen to, are never stored. The usage record keeps the kind of thing
+  you did (a place, a venue, an event), never which one or where.</li>
+<li><strong>No trackers and no third-party analytics.</strong> The usage record
+  above is our own and stays in our own database. The app contains no
+  analytics or crash-reporting SDK, no advertising ID collection, and no
+  ads.</li>
 <li><strong>No microphone, camera, contacts, or photos.</strong> Bob talks; it does not
   listen.</li>
 </ul>
@@ -199,7 +239,8 @@ load the subscription offer.</p>
   behind our own server; it receives place names and article text, never your
   identity.</li>
 <li><strong>Supabase</strong> (supabase.com) — hosts our database and server functions:
-  your account, the prepared place guides, and the narration proxy. It stores
+  your account, the usage record, the prepared place guides, and the
+  narration proxy. It stores
   this on our behalf and does not use any of it for its own purposes.</li>
 <li><strong>RevenueCat</strong> (revenuecat.com) — checks and records your subscription
   as our processor, as described under Subscriptions and payment.</li>
@@ -222,14 +263,16 @@ load the subscription offer.</p>
 information from anyone, including children.</p>
 
 <h2>Your rights</h2>
-<p><strong>As a guest</strong> there is nothing on our side to export, correct, or
-delete — that is the point of the guest option. <strong>If you signed in</strong>, you
-can:</p>
+<p><strong>As a guest</strong> we hold nothing that identifies you — that is the point
+of the guest option. The usage record is tied only to a random install
+number we cannot connect to you, so there is nothing we can look up, export
+or delete for you. <strong>If you signed in</strong>, you can:</p>
 <ul>
 <li><strong>Delete your account and everything in it</strong>, from inside the app or by
   email — see <a href="#delete">How to delete your account and your data</a>.</li>
 <li><strong>Ask for a copy</strong> of what we hold for you — which is your account row:
-  the identifier, the email, and the name if you shared it — at
+  the identifier, the email, and the name if you shared it — and of the usage
+  record linked to it, at
   <a href="mailto:apestudios.io@gmail.com">apestudios.io@gmail.com</a>.</li>
 <li><strong>Ask us to delete your subscription record</strong> at RevenueCat, at the
   same address (guests can ask too).</li>
@@ -238,7 +281,9 @@ can:</p>
 
 <h2>Data retention</h2>
 <p>Your account is kept until you delete it, and deleting it removes the
-profile stored with it at the same moment. Ordinary technical server logs
+profile stored with it at the same moment. The usage record is kept for
+[how long — set before publishing]; deleting your account unlinks it from
+you at once. Ordinary technical server logs
 (the kind every web service produces) are short-lived and are not used to
 build any profile of you.</p>
 
