@@ -18,12 +18,20 @@ body.theme-bob {
 
 .theme-bob .studio-link { color: var(--teal); }
 
-.theme-bob .app-visual img,
-.theme-bob .app-visual .frame {
+.theme-bob .frame-art {
   border: 3px solid var(--ink);
   border-radius: 12px;
   background: var(--paper);
   box-shadow: 6px 6px 0 var(--mustard);
+}
+
+.theme-bob .progress-bar {
+  background: var(--red);
+}
+
+.theme-bob .points li::before {
+  background: var(--red);
+  opacity: 1;
 }
 
 .theme-bob .legal a:hover,

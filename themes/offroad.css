@@ -19,10 +19,13 @@ body.theme-offroad {
 
 .theme-offroad .lede { color: var(--muted); }
 
-.theme-offroad .app-visual img {
-  border-radius: 18px;
-  border: 2px solid var(--forest);
-  box-shadow: 0 18px 40px rgba(46, 64, 52, 0.18);
+.theme-offroad .phone {
+  background: var(--forest);
+  box-shadow: 0 24px 50px rgba(46, 64, 52, 0.28);
+}
+
+.theme-offroad .progress-bar {
+  background: var(--amber);
 }
 
 .theme-offroad .legal a:hover {

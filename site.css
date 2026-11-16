@@ -7,6 +7,12 @@
   --studio-display: "Space Grotesk", system-ui, sans-serif;
   --studio-body: "Archivo", system-ui, sans-serif;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 40px;
+  --space-5: 64px;
+  --space-6: 96px;
 }
 
 *,
@@ -17,6 +23,18 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 320ms;
+  animation-timing-function: var(--ease);
 }
 
 body {
@@ -46,6 +64,50 @@ a:focus-visible,
   outline-offset: 3px;
 }
 
+h1, h2, .brand, .headline, .band-name {
+  text-wrap: balance;
+}
+
+p, .lede, .support, .band-line {
+  text-wrap: pretty;
+}
+
+/* Scroll progress — CSS scroll-driven */
+.progress {
+  position: fixed;
+  inset: 0 auto auto 0;
+  z-index: 40;
+  width: 100%;
+  height: 3px;
+  background: transparent;
+  pointer-events: none;
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+}
+
+.progress-bar {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: var(--studio-olive);
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: scroll()) {
+    .progress-bar {
+      animation: grow-progress auto linear;
+      animation-timeline: scroll();
+    }
+  }
+}
+
+@keyframes grow-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
 /* —— Studio home —— */
 .home {
   min-height: 100vh;
@@ -63,6 +125,7 @@ a:focus-visible,
   background:
     radial-gradient(120% 80% at 85% 10%, rgba(61, 74, 58, 0.22), transparent 55%),
     linear-gradient(165deg, #E8E0D0 0%, var(--studio-ground) 45%, #D9CFBA 100%);
+  view-transition-name: hero;
 }
 
 .hero::before {
@@ -89,14 +152,30 @@ a:focus-visible,
   opacity: 0.14;
   user-select: none;
   pointer-events: none;
-  animation: rise 900ms var(--ease) both;
 }
 
 .hero-inner {
   position: relative;
   z-index: 1;
   max-width: 40rem;
-  animation: rise 700ms var(--ease) both;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-mark,
+  .hero-inner {
+    transition:
+      opacity 700ms var(--ease),
+      translate 700ms var(--ease);
+    transition-behavior: allow-discrete;
+  }
+
+  @starting-style {
+    .hero-mark,
+    .hero-inner {
+      opacity: 0;
+      translate: 0 18px;
+    }
+  }
 }
 
 .brand {
@@ -136,6 +215,7 @@ a:focus-visible,
   align-items: center;
   justify-content: center;
   min-height: 48px;
+  min-width: 44px;
   padding: 0 22px;
   border-radius: 999px;
   font-family: var(--studio-display);
@@ -143,7 +223,7 @@ a:focus-visible,
   font-size: 0.95rem;
   text-decoration: none;
   cursor: pointer;
-  transition: transform 200ms var(--ease), background 200ms var(--ease), color 200ms var(--ease);
+  transition: transform 220ms var(--ease), background 220ms var(--ease), color 220ms var(--ease), box-shadow 220ms var(--ease);
 }
 
 .btn:hover {
@@ -178,28 +258,43 @@ a:focus-visible,
   display: grid;
   grid-template-columns: 1fr;
   gap: 8px;
-  padding: clamp(36px, 7vw, 72px) clamp(24px, 5vw, 56px);
+  padding: clamp(40px, 8vw, 88px) clamp(24px, 5vw, 56px);
   text-decoration: none;
   color: inherit;
   cursor: pointer;
-  transition: transform 280ms var(--ease), filter 280ms var(--ease);
-  animation: rise 700ms var(--ease) both;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 220px;
+  transition: filter 280ms var(--ease);
 }
 
-.band:nth-child(1) { animation-delay: 40ms; }
-.band:nth-child(2) { animation-delay: 80ms; }
-.band:nth-child(3) { animation-delay: 120ms; }
-.band:nth-child(4) { animation-delay: 160ms; }
-.band:nth-child(5) { animation-delay: 200ms; }
-
 .band:hover {
-  transform: translateY(-3px);
-  filter: brightness(1.03);
+  filter: brightness(1.04);
+}
+
+.band:hover .band-go {
+  translate: 6px 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports ((animation-timeline: view()) and (animation-range: entry)) {
+    @keyframes band-in {
+      from {
+        opacity: 0.35;
+        transform: translateY(28px);
+      }
+    }
+
+    .band {
+      animation: band-in auto linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 55%;
+    }
+  }
 }
 
 .band-name {
   margin: 0;
-  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-size: clamp(1.7rem, 4.2vw, 2.6rem);
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1.1;
@@ -209,16 +304,17 @@ a:focus-visible,
   margin: 0;
   max-width: 34em;
   opacity: 0.85;
-  font-size: 1.05rem;
+  font-size: 1.08rem;
 }
 
 .band-go {
-  margin-top: 10px;
+  margin-top: 12px;
   font-family: var(--studio-display);
   font-weight: 600;
   font-size: 0.9rem;
   letter-spacing: 0.02em;
   opacity: 0.75;
+  transition: translate 220ms var(--ease);
 }
 
 .band-bob {
@@ -264,34 +360,38 @@ a:focus-visible,
 }
 
 .home-foot {
-  padding: 40px clamp(24px, 5vw, 56px) 56px;
+  padding: var(--space-4) clamp(24px, 5vw, 56px) var(--space-5);
   color: var(--studio-muted);
   font-size: 0.95rem;
 }
 
 .home-foot a {
   text-underline-offset: 3px;
+  cursor: pointer;
 }
 
-/* —— Shared app / legal chrome —— */
+/* —— App landings —— */
 .page {
   min-height: 100vh;
 }
 
 .page-chrome {
-  max-width: 1080px;
+  max-width: 1120px;
   margin: 0 auto;
-  padding: clamp(20px, 4vw, 40px) clamp(20px, 4vw, 40px) 64px;
+  padding: clamp(20px, 4vw, 40px) clamp(20px, 4vw, 40px) 72px;
 }
 
 .studio-link {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   margin: 0 0 28px;
   font-family: var(--studio-display);
   font-size: 0.9rem;
   font-weight: 600;
   text-decoration: none;
   opacity: 0.75;
+  cursor: pointer;
   transition: opacity 180ms var(--ease);
 }
 
@@ -303,9 +403,8 @@ a:focus-visible,
 
 .app-hero {
   display: grid;
-  gap: clamp(28px, 5vw, 48px);
+  gap: clamp(28px, 5vw, 56px);
   align-items: center;
-  animation: rise 700ms var(--ease) both;
 }
 
 @media (min-width: 860px) {
@@ -323,18 +422,79 @@ a:focus-visible,
 
 .app-copy .lede {
   margin: 0 0 24px;
-  font-size: 1.1rem;
+  font-size: 1.12rem;
   max-width: 32em;
   opacity: 0.88;
 }
 
-.app-visual {
-  justify-self: stretch;
+.points {
+  list-style: none;
+  margin: 0 0 28px;
+  padding: 0;
+  display: grid;
+  gap: 10px;
 }
 
-.app-visual img,
-.app-visual svg {
+.points li {
+  position: relative;
+  padding-left: 1.15em;
+  font-size: 0.98rem;
+  opacity: 0.9;
+}
+
+.points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 0.45em;
+  height: 0.45em;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.45;
+}
+
+.app-visual {
+  justify-self: center;
+  width: min(100%, 340px);
+}
+
+/* App Store–style device frame */
+.phone {
+  position: relative;
+  border-radius: 36px;
+  padding: 12px;
+  background: #1a1a1a;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 28px 60px rgba(0, 0, 0, 0.28);
+}
+
+.phone::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  translate: -50% 0;
+  width: 88px;
+  height: 22px;
+  border-radius: 999px;
+  background: #0a0a0a;
+  z-index: 2;
+}
+
+.phone img {
   width: 100%;
+  border-radius: 26px;
+  aspect-ratio: 9 / 19.5;
+  object-fit: cover;
+  object-position: top center;
+  background: #111;
+}
+
+.frame-art {
+  width: 100%;
+  max-width: 480px;
   border-radius: 16px;
 }
 
@@ -367,6 +527,10 @@ a:focus-visible,
 
 .legal a {
   text-underline-offset: 3px;
+  cursor: pointer;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .contact {
@@ -377,9 +541,9 @@ a:focus-visible,
 
 .contact a {
   text-underline-offset: 3px;
+  cursor: pointer;
 }
 
-/* Legal doc pages stay readable */
 .legal-doc {
   max-width: 720px;
   margin: 0 auto;
@@ -392,27 +556,21 @@ a:focus-visible,
   margin: 0 0 12px;
 }
 
-@keyframes rise {
-  from {
-    opacity: 0;
-    transform: translateY(18px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .hero-mark,
-  .hero-inner,
-  .band,
-  .app-hero {
+
+  .btn:hover,
+  .band:hover .band-go {
+    transform: none;
+    translate: none;
+  }
+
+  .band {
     animation: none !important;
   }
-  .btn:hover,
-  .band:hover {
-    transform: none;
+
+  .progress-bar {
+    animation: none !important;
+    transform: scaleX(0);
   }
 }

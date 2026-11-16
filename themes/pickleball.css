@@ -18,10 +18,18 @@ body.theme-pickleball {
 
 .theme-pickleball .lede { color: var(--muted); }
 
-.theme-pickleball .app-visual img,
-.theme-pickleball .app-visual .frame {
+.theme-pickleball .frame-art {
   border-radius: 20px;
   border: 2px solid var(--lime);
+}
+
+.theme-pickleball .progress-bar {
+  background: var(--lime);
+}
+
+.theme-pickleball .points li::before {
+  background: var(--lime);
+  opacity: 1;
 }
 
 .theme-pickleball .legal a,

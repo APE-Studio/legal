@@ -24,8 +24,16 @@ body.theme-bump {
 
 .theme-bump .lede { color: var(--body); }
 
-.theme-bump .app-visual img {
-  border-radius: 20px;
-  border: 1px solid var(--line);
-  box-shadow: 0 16px 36px rgba(42, 35, 32, 0.08);
+.theme-bump .phone {
+  background: #2A2320;
+  box-shadow: 0 20px 44px rgba(42, 35, 32, 0.12);
+}
+
+.theme-bump .progress-bar {
+  background: var(--accent);
+}
+
+.theme-bump .points li::before {
+  background: var(--accent);
+  opacity: 1;
 }

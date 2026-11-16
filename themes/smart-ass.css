@@ -19,10 +19,18 @@ body.theme-smart-ass {
 
 .theme-smart-ass .lede { color: var(--muted); }
 
-.theme-smart-ass .app-visual img {
-  border-radius: 18px;
-  border: 1px solid var(--line);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+.theme-smart-ass .phone {
+  background: #140F0D;
+  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.55);
+}
+
+.theme-smart-ass .progress-bar {
+  background: var(--accent);
+}
+
+.theme-smart-ass .points li::before {
+  background: var(--accent);
+  opacity: 1;
 }
 
 .theme-smart-ass .legal a:hover,
