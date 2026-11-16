@@ -4,9 +4,35 @@ body.theme-offroad {
   --forest: #2E4034;
   --amber: #C97D00;
   --muted: #6F6A5C;
-  background: var(--ground);
+  --page-bg: var(--ground);
+  background:
+    linear-gradient(180deg, #2E4034 0 72px, transparent 72px),
+    radial-gradient(ellipse 80% 45% at 90% 20%, rgba(201, 125, 0, 0.16), transparent 55%),
+    var(--ground);
   color: var(--ink);
   font-family: Figtree, system-ui, sans-serif;
+}
+
+.theme-offroad .landing-stage::before {
+  content: "";
+  position: absolute;
+  inset: 72px 0 auto 0;
+  height: 180px;
+  background:
+    repeating-linear-gradient(
+      -18deg,
+      transparent,
+      transparent 11px,
+      rgba(46, 64, 52, 0.05) 11px,
+      rgba(46, 64, 52, 0.05) 12px
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.theme-offroad .studio-link {
+  color: #F5EFDF;
+  opacity: 1;
 }
 
 .theme-offroad .app-copy h1 {
@@ -14,8 +40,6 @@ body.theme-offroad {
   font-weight: 400;
   color: var(--forest);
 }
-
-.theme-offroad .studio-link { color: var(--forest); }
 
 .theme-offroad .lede { color: var(--muted); }
 
@@ -26,6 +50,11 @@ body.theme-offroad {
 
 .theme-offroad .progress-bar {
   background: var(--amber);
+}
+
+.theme-offroad .points li::before {
+  background: var(--amber);
+  opacity: 1;
 }
 
 .theme-offroad .legal a:hover {

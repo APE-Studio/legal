@@ -5,9 +5,29 @@ body.theme-bob {
   --red: #C6432F;
   --teal: #1E7A78;
   --mustard: #E9A93C;
-  background: var(--paper);
+  --page-bg: var(--paper);
+  background:
+    radial-gradient(ellipse 70% 50% at 100% 0%, rgba(30, 122, 120, 0.18), transparent 55%),
+    radial-gradient(ellipse 50% 40% at 0% 100%, rgba(233, 169, 60, 0.2), transparent 50%),
+    var(--paper);
   color: var(--ink);
   font-family: Archivo, system-ui, sans-serif;
+}
+
+.theme-bob .landing-stage::before {
+  content: "BOB WAS HERE";
+  position: absolute;
+  right: -2%;
+  top: 18%;
+  font-family: "Alfa Slab One", Georgia, serif;
+  font-size: clamp(3rem, 12vw, 8rem);
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  opacity: 0.06;
+  transform: rotate(-8deg);
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 0;
 }
 
 .theme-bob .app-copy h1 {
@@ -18,11 +38,35 @@ body.theme-bob {
 
 .theme-bob .studio-link { color: var(--teal); }
 
+.theme-bob .lede { color: var(--muted); }
+
 .theme-bob .frame-art {
   border: 3px solid var(--ink);
   border-radius: 12px;
   background: var(--paper);
-  box-shadow: 6px 6px 0 var(--mustard);
+  box-shadow: 8px 8px 0 var(--mustard);
+}
+
+.theme-bob .cta-app {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 22px;
+  margin: 0 0 8px;
+  background: var(--red);
+  color: #F4E9D5;
+  border: 3px solid var(--ink);
+  border-radius: 10px;
+  font-family: Archivo, system-ui, sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 4px 4px 0 var(--ink);
+  cursor: pointer;
+}
+
+.theme-bob .cta-app:hover {
+  translate: 1px 1px;
+  box-shadow: 3px 3px 0 var(--ink);
 }
 
 .theme-bob .progress-bar {

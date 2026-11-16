@@ -5,9 +5,34 @@ body.theme-smart-ass {
   --muted: #B9A898;
   --accent: #FF8A4C;
   --line: #3A2E27;
-  background: var(--bg);
+  --page-bg: var(--bg);
+  background:
+    radial-gradient(circle at 12% 20%, rgba(255, 138, 76, 0.16), transparent 35%),
+    repeating-radial-gradient(
+      circle at 88% 70%,
+      transparent 0 10px,
+      rgba(255, 255, 255, 0.015) 10px 11px
+    ),
+    var(--bg);
   color: var(--text);
   font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.theme-smart-ass .landing-stage::before {
+  content: "";
+  position: absolute;
+  width: min(42vw, 320px);
+  height: min(42vw, 320px);
+  right: -4%;
+  top: 22%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%, #2A1F1A 0 18%, transparent 19%),
+    repeating-radial-gradient(circle at 50% 50%, #140F0D 0 6px, #2A1F1A 6px 12px);
+  box-shadow: 0 0 0 3px rgba(255, 138, 76, 0.25);
+  opacity: 0.55;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .theme-smart-ass .app-copy h1 {

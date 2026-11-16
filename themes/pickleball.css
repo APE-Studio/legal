@@ -4,9 +4,28 @@ body.theme-pickleball {
   --lime: #D4F00F;
   --text: #ffffff;
   --muted: rgba(255, 255, 255, 0.55);
-  background: var(--bg);
+  --page-bg: var(--bg);
+  background:
+    linear-gradient(90deg, var(--lime) 0 8px, transparent 8px),
+    radial-gradient(ellipse 60% 50% at 100% 0%, rgba(212, 240, 15, 0.18), transparent 50%),
+    var(--bg);
   color: var(--text);
   font-family: Outfit, system-ui, sans-serif;
+}
+
+.theme-pickleball .landing-stage::before {
+  content: "9-4-2";
+  position: absolute;
+  right: 4%;
+  bottom: 8%;
+  font-weight: 900;
+  font-size: clamp(4rem, 18vw, 12rem);
+  line-height: 0.85;
+  color: var(--lime);
+  opacity: 0.12;
+  letter-spacing: -0.06em;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .theme-pickleball .app-copy h1 {
@@ -21,6 +40,7 @@ body.theme-pickleball {
 .theme-pickleball .frame-art {
   border-radius: 20px;
   border: 2px solid var(--lime);
+  box-shadow: 0 0 0 8px rgba(212, 240, 15, 0.12);
 }
 
 .theme-pickleball .progress-bar {
