@@ -1,0 +1,31 @@
+body.theme-bump {
+  --ground: #FBF7F2;
+  --ink: #2A2320;
+  --body: #4A403A;
+  --accent: #A94E3B;
+  --line: #E6DCD3;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.theme-bump .app-copy h1 {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  font-weight: 500;
+}
+
+.theme-bump .app-copy .lede em,
+.theme-bump .accent {
+  color: var(--accent);
+  font-style: italic;
+}
+
+.theme-bump .studio-link { color: var(--accent); }
+
+.theme-bump .lede { color: var(--body); }
+
+.theme-bump .app-visual img {
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  box-shadow: 0 16px 36px rgba(42, 35, 32, 0.08);
+}

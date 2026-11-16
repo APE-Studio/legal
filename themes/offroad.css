@@ -1,0 +1,30 @@
+body.theme-offroad {
+  --ground: #F5EFDF;
+  --ink: #2B2A24;
+  --forest: #2E4034;
+  --amber: #C97D00;
+  --muted: #6F6A5C;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: Figtree, system-ui, sans-serif;
+}
+
+.theme-offroad .app-copy h1 {
+  font-family: Caprasimo, Georgia, serif;
+  font-weight: 400;
+  color: var(--forest);
+}
+
+.theme-offroad .studio-link { color: var(--forest); }
+
+.theme-offroad .lede { color: var(--muted); }
+
+.theme-offroad .app-visual img {
+  border-radius: 18px;
+  border: 2px solid var(--forest);
+  box-shadow: 0 18px 40px rgba(46, 64, 52, 0.18);
+}
+
+.theme-offroad .legal a:hover {
+  color: var(--amber);
+}

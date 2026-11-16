@@ -1,0 +1,32 @@
+body.theme-bob {
+  --ink: #23201C;
+  --paper: #F4E9D5;
+  --muted: #5C574C;
+  --red: #C6432F;
+  --teal: #1E7A78;
+  --mustard: #E9A93C;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Archivo, system-ui, sans-serif;
+}
+
+.theme-bob .app-copy h1 {
+  font-family: "Alfa Slab One", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.theme-bob .studio-link { color: var(--teal); }
+
+.theme-bob .app-visual img,
+.theme-bob .app-visual .frame {
+  border: 3px solid var(--ink);
+  border-radius: 12px;
+  background: var(--paper);
+  box-shadow: 6px 6px 0 var(--mustard);
+}
+
+.theme-bob .legal a:hover,
+.theme-bob .contact a:hover {
+  color: var(--red);
+}

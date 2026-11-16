@@ -17,3 +17,4 @@
 *.mobileprovision
 *.keystore
 *.jks
+.agents/

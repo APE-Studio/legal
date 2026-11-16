@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 280" role="img" aria-label="Pickleball score callout 9-4-2">
+  <rect width="420" height="280" fill="#000"/>
+  <rect x="0" y="0" width="210" height="280" fill="#D4F00F"/>
+  <rect x="210" y="0" width="210" height="280" fill="#1C1C1E"/>
+  <text x="105" y="168" text-anchor="middle" fill="#000" font-family="system-ui, sans-serif" font-size="96" font-weight="900">9</text>
+  <text x="315" y="168" text-anchor="middle" fill="#fff" font-family="system-ui, sans-serif" font-size="96" font-weight="900">4</text>
+  <rect x="145" y="108" width="130" height="64" rx="32" fill="#000" stroke="#D4F00F" stroke-width="3"/>
+  <text x="210" y="152" text-anchor="middle" fill="#D4F00F" font-family="system-ui, sans-serif" font-size="28" font-weight="800">9-4-2</text>
+  <circle cx="40" cy="40" r="8" fill="#000"/>
+  <text x="210" y="248" text-anchor="middle" fill="#ffffff8c" font-family="system-ui, sans-serif" font-size="14" font-weight="600">SERVING</text>
+</svg>

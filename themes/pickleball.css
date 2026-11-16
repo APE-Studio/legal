@@ -1,0 +1,35 @@
+body.theme-pickleball {
+  --bg: #000000;
+  --surface: #1C1C1E;
+  --lime: #D4F00F;
+  --text: #ffffff;
+  --muted: rgba(255, 255, 255, 0.55);
+  background: var(--bg);
+  color: var(--text);
+  font-family: Outfit, system-ui, sans-serif;
+}
+
+.theme-pickleball .app-copy h1 {
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.theme-pickleball .studio-link { color: var(--lime); }
+
+.theme-pickleball .lede { color: var(--muted); }
+
+.theme-pickleball .app-visual img,
+.theme-pickleball .app-visual .frame {
+  border-radius: 20px;
+  border: 2px solid var(--lime);
+}
+
+.theme-pickleball .legal a,
+.theme-pickleball .contact a {
+  color: var(--lime);
+}
+
+.theme-pickleball a:focus-visible,
+.theme-pickleball .btn:focus-visible {
+  outline-color: var(--lime);
+}
