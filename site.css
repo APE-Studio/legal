@@ -1,0 +1,104 @@
+:root {
+  --ground: #F5EFDF;
+  --ink: #2B2A24;
+  --muted: #5C574C;
+  --line: #E3D9BC;
+  --card: #FBF6EA;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px 24px 72px;
+}
+
+.studio {
+  margin: 0 0 28px;
+  font-size: 0.95rem;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0 0 8px;
+}
+
+.lede, .studio-lede {
+  margin: 0;
+  color: var(--muted);
+  max-width: 38em;
+}
+
+.cards {
+  display: grid;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.card {
+  display: block;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px 18px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.card h2 {
+  margin: 0 0 4px;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 28px 0 0;
+}
+
+.badges a {
+  display: block;
+  line-height: 0;
+}
+
+.badges img {
+  height: 40px;
+  width: auto;
+}
+
+.legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-top: 32px;
+}
+
+a { color: var(--ink); }
+
+.legal a, .studio a, .contact a { text-underline-offset: 3px; }
+
+.contact {
+  margin: 36px 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}

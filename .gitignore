@@ -1,8 +1,10 @@
 .DS_Store
 
-# This repo is PUBLIC and served at ape-studio.github.io/legal.
-# Anything committed here is published immediately, so the secret rules matter
-# more here than anywhere else, even though nothing secret belongs in it.
+# This repo is PUBLIC. GitHub Pages still publishes main at
+# ape-studio.github.io/legal the moment it is pushed. The store site is
+# https://apestudios.app once that domain is attached. Anything committed
+# here is published immediately, so the secret rules matter more here than
+# anywhere else, even though nothing secret belongs in it.
 .env
 .env.*
 !.env.example

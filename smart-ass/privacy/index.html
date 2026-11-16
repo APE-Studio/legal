@@ -35,10 +35,10 @@
   <p>Smart Ass — APE Studios</p>
 </div></header>
 <main>
-<p><strong>Effective date:</strong> 11 November 2026<br>
+<p><strong>Effective date:</strong> 16 November 2026<br>
 <strong>Developer:</strong> APE Studios<br>
 <strong>Contact:</strong> <a href="mailto:apestudios.io@gmail.com">apestudios.io@gmail.com</a><br>
-<strong>Published at:</strong> https://ape-studio.github.io/legal/smart-ass/privacy/</p>
+<strong>Published at:</strong> https://apestudios.app/smart-ass/privacy/</p>
 <p>Smart Ass is a music companion for the car: it plays the Top 100 songs of
 each decade from Apple Music, and a host tells you each song's story (Info) or
 quizzes you on it (Game). This policy describes what the app does with your
@@ -46,9 +46,13 @@ data.</p>
 <p>The short version: <strong>the app records how it is used (which screens
 you open, which songs play, how a game went, and errors) under a random ID
 that is not linked to you</strong>, so we can fix problems and improve the app.
-It never sends your name, your email or your Apple ID with that. Signing in
-is optional, and what signing in creates stays on your phone. There are no
-ads, no tracking across other apps or websites, and no data brokers.</p>
+Those records never include your name, your email, your Apple ID or your
+leaderboard name. Signing in is optional. If you sign in with Apple, we store
+a profile under your leaderboard name, and each finished one-decade game, on
+our database. Smart Ass Pro is an App Store subscription: Apple takes the
+payment, and RevenueCat stores whether Pro is active. We never see your card.
+There are no ads, no tracking across other apps or websites, and no data
+brokers.</p>
 
 <h2>How the app is used (app events)</h2>
 <p>While you use Smart Ass, the app writes short records of what happens in it
@@ -91,17 +95,29 @@ the app does not read your library, your playlists or your listening history,
 and it does not change anything in your Apple Music account.</p>
 
 <h2>Signing in (optional)</h2>
-<p>You can play without an account. If you choose Sign in with Apple to keep
-your points, Apple gives the app an ID for your account and, the first time
-only and if you agree, your name. The app keeps these, your leaderboard name
-and your total points <strong>on your iPhone only</strong> (in the iOS
-Keychain). They are not sent to us. We never see your password or your email
-address.</p>
-<p>You can sign out or delete your account in the app: Settings → Player →
-<strong>Delete account</strong>. That removes your name, leaderboard name and
-points from the phone at once.</p>
-<p>If we later put the leaderboard online, we will update this policy before
-any of this leaves your phone.</p>
+<p>You can play without an account. If you choose Sign in with Apple, Apple
+gives the app a sign-in token and, the first time only and if you agree, your
+name. The app sends that token to our database (Supabase) and creates a
+profile there. The profile holds your <strong>leaderboard name</strong>: it
+starts from the name Apple gave you, and you can change it in Settings. We
+never see your password, and we do not ask Apple for your email.</p>
+<p>The name Apple gave you, your leaderboard name and your total points are
+also kept on this iPhone (in the iOS Keychain), so the app can show them
+without waiting for the network.</p>
+<p>A finished game on <strong>one decade</strong> is stored with that profile:
+the decade, the score, how many you got right, and each answer (what you
+picked, or that the time ran out, and how long you took). The leaderboard
+shows your leaderboard name, the decade, the score and how many you got
+right. The answers themselves stay with your account. A game that mixes
+decades is not stored, and neither is a game you play while signed out. Those
+still count on the phone only.</p>
+<p>You can sign out in Settings → Player. Sign out ends the session. The
+profile and the games stay until you delete the account.</p>
+<p><strong>Delete account</strong> is in Settings → Player. That removes your
+profile, your games and your answers from Supabase, and removes the copy on
+the phone. If you have Smart Ass Pro, the App Store subscription keeps
+renewing until you cancel it. Cancelling is in iPhone Settings, under your
+name → Subscriptions. Deleting the account does not cancel it.</p>
 
 <h2>Song packs</h2>
 <p>The host's voice for each decade is a download the app requests from
@@ -109,10 +125,34 @@ Apple's App Store servers the first time you play that decade. Apple handles
 that download; it carries nothing about you.</p>
 
 <h2>Purchases</h2>
-<p>Any purchase in Smart Ass goes through Apple's App Store. Apple processes
-the payment: <strong>we never see or store your payment details</strong>.
-Cancelling works the way every App Store subscription does, in Settings under
-your name → Subscriptions.</p>
+<p>Smart Ass Pro, if you buy it, is an App Store subscription. Apple processes
+the payment: <strong>we never see or store your card</strong>. Cancelling
+works the way every App Store subscription does, in iPhone Settings under
+your name → Subscriptions. Deleting your account in the app does not cancel
+the subscription.</p>
+<p>To know whether Pro is active, the app uses <strong>RevenueCat</strong>
+(revenuecat.com). RevenueCat stores the Pro entitlement: which plan is
+active and whether it renews. It acts on our behalf.</p>
+<ul>
+<li><strong>What RevenueCat receives:</strong> an app user ID — a random ID
+  while you are signed out, or the id Supabase assigns to your account once
+  you are signed in, so Pro follows that account — plus the app version,
+  device model, iOS version and language, your App Store country and
+  currency, the IP address any internet request carries, and, when you buy
+  or restore, the purchase record Apple issues: which plan, price, trial and
+  renewal dates, and Apple's transaction IDs. It does not receive your name,
+  your email, your leaderboard name, or your card.</li>
+<li><strong>Why:</strong> to check Pro and unlock the decades it includes. It
+  is not used for advertising or tracking.</li>
+<li><strong>How long:</strong> RevenueCat keeps the record while the
+  subscription exists and as long as needed for accounting. You can ask us
+  to delete that record (see Your rights). Deleting it does not cancel the
+  subscription.</li>
+</ul>
+<p>RevenueCat's privacy policy:
+<a href="https://www.revenuecat.com/privacy/">https://www.revenuecat.com/privacy/</a>.
+Even if you never buy anything, the app contacts RevenueCat when it starts,
+to load the Pro offer and check whether Pro is active.</p>
 
 <h2>What we deliberately do not collect</h2>
 <ul>
@@ -120,7 +160,9 @@ your name → Subscriptions.</p>
   other companies' apps or websites.</li>
 <li><strong>No location, microphone, camera, contacts or photos.</strong> The host
   talks; the app does not listen.</li>
-<li><strong>No names or emails in our database.</strong></li>
+<li><strong>No email address, and no payment card.</strong> The leaderboard
+  name is the name we store, and only if you sign in. App events do not
+  include it.</li>
 </ul>
 
 <h2>Third parties</h2>
@@ -129,20 +171,27 @@ your name → Subscriptions.</p>
   Apple, song pack downloads and App Store payments, as described above.
   Governed by <a href="https://www.apple.com/legal/privacy/">Apple's privacy
   policy</a>.</li>
-<li><strong>Supabase</strong> (supabase.com): hosts our database, where the app
-  events are stored. It stores them on our behalf and does not use them for
-  its own purposes.</li>
+<li><strong>Supabase</strong> (supabase.com): hosts our database. App events
+  are stored there, and, if you sign in, your profile, finished games and
+  answers. Supabase stores them on our behalf and does not use them for its
+  own purposes.</li>
+<li><strong>RevenueCat</strong> (revenuecat.com): stores the Pro entitlement,
+  as described under Purchases.
+  <a href="https://www.revenuecat.com/privacy/">RevenueCat's privacy policy</a>.</li>
 </ul>
 
 <h2>Children</h2>
 <p>Smart Ass is not directed at children. We do not knowingly collect personal
-information from anyone, including children.</p>
+information from children.</p>
 
 <h2>Your rights</h2>
 <p>The app events are not linked to you, so we cannot find yours on request;
 deleting and reinstalling the app starts a new random ID with no link to the
-old one. Your account data lives only on your phone, and you can delete it in
-the app at any time. For any question about your data, write to
+old one. Your profile, games and answers are removed when you delete the
+account in the app (Settings → Player → <strong>Delete account</strong>).
+That does not cancel an App Store subscription. To ask about the RevenueCat
+record of a purchase, write to us with the order ID from Apple's receipt
+email. For any question about your data, write to
 <a href="mailto:apestudios.io@gmail.com">apestudios.io@gmail.com</a>.</p>
 
 <h2>Changes</h2>
