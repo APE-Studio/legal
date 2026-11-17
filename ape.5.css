@@ -246,25 +246,25 @@ p, .lede, .support, .band-line, .points li { text-wrap: pretty; }
   display: flex;
   align-items: flex-end;
   justify-content: stretch;
-  gap: clamp(4px, 0.7vw, 10px);
+  gap: clamp(8px, 1.1vw, 16px);
   width: 100%;
   height: 100%;
-  min-height: min(68vh, 560px);
-  padding-bottom: 2vh;
+  min-height: min(72vh, 620px);
+  padding: 4vh 0 3vh;
 }
 
 .signal span {
   flex: 1 1 0;
-  min-width: 0;
+  min-width: 12px;
   height: calc(var(--h, 40) * 1%);
   border-radius: 999px;
   background: linear-gradient(
     180deg,
-    rgba(10, 10, 10, 0.55) 0%,
-    rgba(30, 224, 232, 0.85) 55%,
-    rgba(10, 10, 10, 0.7) 100%
+    #0A0A0A 0%,
+    #1EE0E8 42%,
+    #0A0A0A 100%
   );
-  box-shadow: 0 0 0 1px rgba(10, 10, 10, 0.12);
+  box-shadow: 0 10px 28px rgba(10, 10, 10, 0.18);
   transform-origin: 50% 100%;
 }
 
