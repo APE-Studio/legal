@@ -247,17 +247,30 @@ p, .lede, .support, .band-line, .points li { text-wrap: pretty; }
 .showcase {
   position: relative;
   width: 100%;
-  max-width: 560px;
-  aspect-ratio: 1 / 1.05;
-  min-height: min(68vh, 580px);
+  max-width: 620px;
+  aspect-ratio: 1 / 1.02;
+  min-height: min(70vh, 620px);
   margin-inline: auto;
   isolation: isolate;
 }
 
+.showcase::after {
+  content: "";
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: 4%;
+  height: 18%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.28), transparent 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+
 .showcase .device {
   position: absolute;
-  width: min(42%, 220px);
-  filter: drop-shadow(0 22px 40px rgba(0, 0, 0, 0.28));
+  width: min(40%, 210px);
+  filter: drop-shadow(0 24px 44px rgba(0, 0, 0, 0.32));
   will-change: transform;
 }
 
@@ -285,26 +298,26 @@ p, .lede, .support, .band-line, .points li { text-wrap: pretty; }
 }
 
 .device-bump {
-  top: 10%;
-  left: 2%;
+  top: 12%;
+  left: 0;
   z-index: 2;
-  transform: rotate(-11deg) translate3d(0, 4%, 0);
+  transform: rotate(-12deg) translate3d(0, 6%, 0);
 }
 
 .device-smart {
-  top: 14%;
-  right: 0;
+  top: 16%;
+  right: -2%;
   z-index: 1;
-  width: min(38%, 200px);
-  transform: rotate(9deg) translate3d(0, 2%, 0);
+  width: min(36%, 190px);
+  transform: rotate(10deg) translate3d(0, 4%, 0);
 }
 
 .device-offroad {
-  top: 6%;
+  top: 2%;
   left: 50%;
   z-index: 4;
-  width: min(48%, 250px);
-  transform: translateX(-46%) rotate(-2deg);
+  width: min(54%, 290px);
+  transform: translateX(-48%) rotate(-1.5deg);
 }
 
 .showcase .poster {
@@ -371,16 +384,16 @@ p, .lede, .support, .band-line, .points li { text-wrap: pretty; }
   to { opacity: 1; transform: translateY(0); }
 }
 @keyframes drift-bump {
-  from { transform: rotate(-11deg) translate3d(0, 4%, 0); }
-  to { transform: rotate(-11deg) translate3d(0, 1%, 0); }
+  from { transform: rotate(-12deg) translate3d(0, 6%, 0); }
+  to { transform: rotate(-12deg) translate3d(0, 3%, 0); }
 }
 @keyframes drift-smart {
-  from { transform: rotate(9deg) translate3d(0, 2%, 0); }
-  to { transform: rotate(9deg) translate3d(0, -1%, 0); }
+  from { transform: rotate(10deg) translate3d(0, 4%, 0); }
+  to { transform: rotate(10deg) translate3d(0, 1%, 0); }
 }
 @keyframes drift-offroad {
-  from { transform: translateX(-46%) rotate(-2deg); }
-  to { transform: translateX(-46%) rotate(-2deg) translateY(-2%); }
+  from { transform: translateX(-48%) rotate(-1.5deg); }
+  to { transform: translateX(-48%) rotate(-1.5deg) translateY(-2%); }
 }
 @keyframes drift-bob {
   from { transform: rotate(-8deg); }
