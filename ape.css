@@ -252,9 +252,11 @@ p, .lede, .support, .band-line { text-wrap: pretty; }
 }
 
 .hero-visual img {
-  width: 100%;
+  width: min(100%, 520px);
   height: auto;
-  max-height: min(70vh, 560px);
+  min-height: 320px;
+  max-height: min(72vh, 580px);
+  margin-left: auto;
   object-fit: contain;
   object-position: center right;
 }
