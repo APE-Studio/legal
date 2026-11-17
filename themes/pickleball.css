@@ -6,8 +6,9 @@ body.theme-pickleball {
   --muted: rgba(255, 255, 255, 0.55);
   --page-bg: var(--bg);
   background:
-    linear-gradient(90deg, var(--lime) 0 8px, transparent 8px),
-    radial-gradient(ellipse 60% 50% at 100% 0%, rgba(212, 240, 15, 0.18), transparent 50%),
+    linear-gradient(90deg, var(--lime) 0 10px, transparent 10px),
+    radial-gradient(ellipse 65% 55% at 100% 0%, rgba(212, 240, 15, 0.22), transparent 52%),
+    radial-gradient(ellipse 40% 35% at 20% 100%, rgba(212, 240, 15, 0.08), transparent 50%),
     var(--bg);
   color: var(--text);
   font-family: Outfit, system-ui, sans-serif;
@@ -16,13 +17,13 @@ body.theme-pickleball {
 .theme-pickleball .landing-stage::before {
   content: "9-4-2";
   position: absolute;
-  right: 4%;
-  bottom: 8%;
+  right: 3%;
+  bottom: 6%;
   font-weight: 900;
-  font-size: clamp(4rem, 18vw, 12rem);
+  font-size: clamp(4rem, 16vw, 11rem);
   line-height: 0.85;
   color: var(--lime);
-  opacity: 0.12;
+  opacity: 0.14;
   letter-spacing: -0.06em;
   pointer-events: none;
   z-index: 0;
@@ -40,12 +41,11 @@ body.theme-pickleball {
 .theme-pickleball .frame-art {
   border-radius: 20px;
   border: 2px solid var(--lime);
-  box-shadow: 0 0 0 8px rgba(212, 240, 15, 0.12);
+  box-shadow: 0 0 0 10px rgba(212, 240, 15, 0.12);
+  background: var(--surface);
 }
 
-.theme-pickleball .progress-bar {
-  background: var(--lime);
-}
+.theme-pickleball .progress-bar { background: var(--lime); }
 
 .theme-pickleball .points li::before {
   background: var(--lime);

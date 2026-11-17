@@ -6,9 +6,9 @@ body.theme-bump {
   --line: #E6DCD3;
   --page-bg: var(--ground);
   background:
-    radial-gradient(circle at 85% 18%, #F6E4DE 0%, transparent 42%),
-    radial-gradient(circle at 10% 80%, rgba(122, 143, 92, 0.12), transparent 40%),
-    var(--ground);
+    radial-gradient(circle at 88% 12%, #F6E4DE 0%, transparent 38%),
+    radial-gradient(circle at 8% 78%, rgba(122, 143, 92, 0.14), transparent 42%),
+    linear-gradient(165deg, #FFFCF8 0%, var(--ground) 55%, #F3EBE3 100%);
   color: var(--ink);
   font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
 }
@@ -30,15 +30,18 @@ body.theme-bump {
 
 .theme-bump .phone {
   background: #2A2320;
-  box-shadow: 0 20px 44px rgba(42, 35, 32, 0.12);
+  box-shadow: 0 24px 52px rgba(42, 35, 32, 0.16);
   border-radius: 36px;
+  border: 1px solid var(--line);
 }
 
-.theme-bump .progress-bar {
-  background: var(--accent);
-}
+.theme-bump .progress-bar { background: var(--accent); }
 
 .theme-bump .points li::before {
   background: var(--accent);
   opacity: 1;
+}
+
+.theme-bump a:focus-visible {
+  outline-color: var(--accent);
 }

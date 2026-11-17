@@ -6,8 +6,9 @@ body.theme-offroad {
   --muted: #6F6A5C;
   --page-bg: var(--ground);
   background:
-    linear-gradient(180deg, #2E4034 0 72px, transparent 72px),
-    radial-gradient(ellipse 80% 45% at 90% 20%, rgba(201, 125, 0, 0.16), transparent 55%),
+    linear-gradient(180deg, #2E4034 0 88px, transparent 88px),
+    radial-gradient(ellipse 80% 45% at 90% 28%, rgba(201, 125, 0, 0.18), transparent 55%),
+    radial-gradient(ellipse 50% 40% at 0% 100%, rgba(46, 64, 52, 0.12), transparent 50%),
     var(--ground);
   color: var(--ink);
   font-family: Figtree, system-ui, sans-serif;
@@ -16,15 +17,15 @@ body.theme-offroad {
 .theme-offroad .landing-stage::before {
   content: "";
   position: absolute;
-  inset: 72px 0 auto 0;
-  height: 180px;
+  inset: 88px 0 auto 0;
+  height: 220px;
   background:
     repeating-linear-gradient(
       -18deg,
       transparent,
       transparent 11px,
-      rgba(46, 64, 52, 0.05) 11px,
-      rgba(46, 64, 52, 0.05) 12px
+      rgba(46, 64, 52, 0.055) 11px,
+      rgba(46, 64, 52, 0.055) 12px
     );
   pointer-events: none;
   z-index: 0;
@@ -45,18 +46,21 @@ body.theme-offroad {
 
 .theme-offroad .phone {
   background: var(--forest);
-  box-shadow: 0 24px 50px rgba(46, 64, 52, 0.28);
+  box-shadow: 0 28px 56px rgba(46, 64, 52, 0.32);
 }
 
-.theme-offroad .progress-bar {
-  background: var(--amber);
-}
+.theme-offroad .progress-bar { background: var(--amber); }
 
 .theme-offroad .points li::before {
   background: var(--amber);
   opacity: 1;
 }
 
-.theme-offroad .legal a:hover {
+.theme-offroad .legal a:hover,
+.theme-offroad .contact a:hover {
   color: var(--amber);
+}
+
+.theme-offroad a:focus-visible {
+  outline-color: var(--amber);
 }

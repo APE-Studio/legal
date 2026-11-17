@@ -7,7 +7,8 @@ body.theme-smart-ass {
   --line: #3A2E27;
   --page-bg: var(--bg);
   background:
-    radial-gradient(circle at 12% 20%, rgba(255, 138, 76, 0.16), transparent 35%),
+    radial-gradient(circle at 12% 18%, rgba(255, 138, 76, 0.2), transparent 36%),
+    radial-gradient(circle at 80% 90%, rgba(255, 138, 76, 0.08), transparent 40%),
     repeating-radial-gradient(
       circle at 88% 70%,
       transparent 0 10px,
@@ -21,16 +22,16 @@ body.theme-smart-ass {
 .theme-smart-ass .landing-stage::before {
   content: "";
   position: absolute;
-  width: min(42vw, 320px);
-  height: min(42vw, 320px);
-  right: -4%;
-  top: 22%;
+  width: min(46vw, 340px);
+  height: min(46vw, 340px);
+  right: -6%;
+  top: 18%;
   border-radius: 50%;
   background:
     radial-gradient(circle at 50% 50%, #2A1F1A 0 18%, transparent 19%),
     repeating-radial-gradient(circle at 50% 50%, #140F0D 0 6px, #2A1F1A 6px 12px);
-  box-shadow: 0 0 0 3px rgba(255, 138, 76, 0.25);
-  opacity: 0.55;
+  box-shadow: 0 0 0 3px rgba(255, 138, 76, 0.28);
+  opacity: 0.6;
   pointer-events: none;
   z-index: 0;
 }
@@ -46,12 +47,11 @@ body.theme-smart-ass {
 
 .theme-smart-ass .phone {
   background: #140F0D;
-  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.55);
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.58);
+  border: 1px solid var(--line);
 }
 
-.theme-smart-ass .progress-bar {
-  background: var(--accent);
-}
+.theme-smart-ass .progress-bar { background: var(--accent); }
 
 .theme-smart-ass .points li::before {
   background: var(--accent);
