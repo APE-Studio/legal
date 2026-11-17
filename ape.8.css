@@ -297,14 +297,14 @@ p, .lede, .support, .band-line, .points li { text-wrap: pretty; }
   object-position: top center;
 }
 
-.device-bump {
+.showcase .device.device-bump {
   top: 12%;
   left: 0;
   z-index: 2;
   transform: rotate(-12deg) translate3d(0, 6%, 0);
 }
 
-.device-smart {
+.showcase .device.device-smart {
   top: 16%;
   right: -2%;
   z-index: 1;
@@ -312,7 +312,7 @@ p, .lede, .support, .band-line, .points li { text-wrap: pretty; }
   transform: rotate(10deg) translate3d(0, 4%, 0);
 }
 
-.device-offroad {
+.showcase .device.device-offroad {
   top: 2%;
   left: 50%;
   z-index: 4;
