@@ -35,7 +35,7 @@
   <p>Smart Ass — APE Studios</p>
 </div></header>
 <main>
-<p><strong>Effective date:</strong> 16 November 2026<br>
+<p><strong>Effective date:</strong> 23 November 2026<br>
 <strong>Developer:</strong> APE Studios<br>
 <strong>Contact:</strong> <a href="mailto:apestudios.io@gmail.com">apestudios.io@gmail.com</a><br>
 <strong>Published at:</strong> https://apestudios.app/smart-ass/privacy/</p>
@@ -47,8 +47,8 @@ data.</p>
 you open, which songs play, how a game went, and errors) under a random ID
 that is not linked to you</strong>, so we can fix problems and improve the app.
 Those records never include your name, your email, your Apple ID or your
-leaderboard name. Signing in is optional. If you sign in with Apple, we store
-a profile under your leaderboard name, and each finished one-decade game, on
+nickname. Signing in is optional. If you sign in with Apple, we store
+a profile under your nickname, and each finished one-decade game, on
 our database. Smart Ass Pro is an App Store subscription: Apple takes the
 payment, and RevenueCat stores whether Pro is active. We never see your card.
 There are no ads, no tracking across other apps or websites, and no data
@@ -72,7 +72,7 @@ wait on the phone and are sent later. Each record holds:</p>
   install of the app and one for each time you open it.</li>
 </ul>
 <p>These records <strong>never contain your name, your email address, your
-Apple ID, your leaderboard name, your location, your contacts or anything you
+Apple ID, your nickname, your location, your contacts or anything you
 type</strong>. The random install ID is not linked to your account or to any
 other ID, and it changes if you delete and reinstall the app. Like any request
 on the internet, sending them shows our server your IP address; we do not
@@ -98,17 +98,17 @@ and it does not change anything in your Apple Music account.</p>
 <p>You can play without an account. If you choose Sign in with Apple, Apple
 gives the app a sign-in token and, the first time only and if you agree, your
 name. The app sends that token to our database (Supabase) and creates a
-profile there. The profile holds your <strong>leaderboard name</strong>: it
+profile there. The profile holds your <strong>nickname</strong>: it
 starts from the name Apple gave you, and you can change it in Settings. We
 never see your password, and we do not ask Apple for your email.</p>
-<p>The name Apple gave you, your leaderboard name and your total points are
+<p>The name Apple gave you, your nickname and your total points are
 also kept on this iPhone (in the iOS Keychain), so the app can show them
 without waiting for the network.</p>
 <p>A finished game on <strong>one decade</strong> is stored with that profile:
 the decade, the score, how many you got right, and each answer (what you
-picked, or that the time ran out, and how long you took). The leaderboard
-shows your leaderboard name, the decade, the score and how many you got
-right. The answers themselves stay with your account. A game that mixes
+picked, or that the time ran out, and how long you took). The app has no
+leaderboard yet. If one is added, it will show your nickname, the decade, the
+score and how many you got right. The answers themselves stay with your account. A game that mixes
 decades is not stored, and neither is a game you play while signed out. Those
 still count on the phone only.</p>
 <p>You can sign out in Settings → Player. Sign out ends the session. The
@@ -141,7 +141,7 @@ active and whether it renews. It acts on our behalf.</p>
   currency, the IP address any internet request carries, and, when you buy
   or restore, the purchase record Apple issues: which plan, price, trial and
   renewal dates, and Apple's transaction IDs. It does not receive your name,
-  your email, your leaderboard name, or your card.</li>
+  your email, your nickname, or your card.</li>
 <li><strong>Why:</strong> to check Pro and unlock the decades it includes. It
   is not used for advertising or tracking.</li>
 <li><strong>How long:</strong> RevenueCat keeps the record while the
@@ -160,8 +160,8 @@ to load the Pro offer and check whether Pro is active.</p>
   other companies' apps or websites.</li>
 <li><strong>No location, microphone, camera, contacts or photos.</strong> The host
   talks; the app does not listen.</li>
-<li><strong>No email address, and no payment card.</strong> The leaderboard
-  name is the name we store, and only if you sign in. App events do not
+<li><strong>No email address, and no payment card.</strong> Your
+  nickname is the only name we store, and only if you sign in. App events do not
   include it.</li>
 </ul>
 
