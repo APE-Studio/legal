@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Bob postcard scene">
+  <rect width="480" height="480" fill="#C6432F"/>
+  <circle cx="318" cy="178" r="78" fill="#E9A93C" stroke="#23201C" stroke-width="3"/>
+  <circle cx="318" cy="178" r="104" fill="none" stroke="#F4E9D5" stroke-width="2.5" stroke-dasharray="3 9" stroke-linecap="round" opacity="0.7"/>
+  <path d="M-10 322 L84 214 L146 270 L232 168 L326 288 L392 236 L490 326 V490 H-10 Z" fill="#7FA9A0" stroke="#23201C" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M-10 398 L78 322 L158 370 L262 284 L362 378 L428 340 L490 392 V490 H-10 Z" fill="#1E7A78" stroke="#23201C" stroke-width="3" stroke-linejoin="round"/>
+  <g transform="rotate(-7 92 104)">
+    <rect x="40" y="40" width="104" height="128" rx="6" fill="#F4E9D5" stroke="#23201C" stroke-width="3"/>
+    <rect x="50" y="50" width="84" height="108" rx="3" fill="none" stroke="#C6432F" stroke-width="2.5" stroke-dasharray="6 5"/>
+    <circle cx="92" cy="96" r="22" fill="none" stroke="#C6432F" stroke-width="2.5"/>
+    <path d="M92 80 v16 M84 96 h16" stroke="#C6432F" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="92" cy="136" r="4" fill="#C6432F"/>
+  </g>
+  <g transform="rotate(-12 182 108)" fill="none" stroke="#F4E9D5" stroke-width="3" opacity="0.9">
+    <ellipse cx="182" cy="108" rx="50" ry="34"/>
+    <text x="182" y="113" text-anchor="middle" fill="#F4E9D5" stroke="none" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" letter-spacing="1">POSTMARK</text>
+  </g>
+  <text x="40" y="430" fill="#F4E9D5" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="700" letter-spacing="1">BOB WAS HERE</text>
+  <text x="41" y="456" fill="#F4E9D5" opacity="0.9" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="16">And he was already tired of it.</text>
+</svg>
