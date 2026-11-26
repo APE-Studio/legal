@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — Pott</title>
+<link rel="canonical" href="https://apestudios.app/pott/privacy/">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="/assets/studio/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ground:#0B0B0D; --raised:#17171A; --ink:#F2F2F4; --muted:#A1A1A8;
+    --accent:#E5484D; --link:#FF8A8D; --line:#2A2A2F;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin:0; background:var(--ground); color:var(--ink);
+    font-family:'Figtree',system-ui,sans-serif; font-size:17px; line-height:1.65;
+  }
+  header { background:linear-gradient(180deg, #3A1517 0%, var(--ground) 100%); padding:48px 24px 32px; }
+  header .wrap { max-width:720px; margin:0 auto; }
+  header h1 { font-weight:800; font-size:2rem; letter-spacing:-.01em; margin:0 0 6px; }
+  header p { margin:0; color:var(--muted); font-size:.95rem; }
+  main { max-width:720px; margin:0 auto; padding:24px 24px 72px; }
+  h2 { font-weight:700; font-size:1.3rem; margin:2.2em 0 .5em; }
+  a { color:var(--link); }
+  li { margin:.4em 0; }
+  .callout { background:var(--raised); border:1px solid var(--line); border-left:4px solid var(--accent);
+             border-radius:12px; padding:4px 20px 16px; margin:1.6em 0; }
+  .callout h2 { margin-top:1.2em; }
+  footer { border-top:1px solid var(--line); color:var(--muted);
+           font-size:.85rem; padding:20px 24px 48px; text-align:center; }
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <h1>Privacy Policy</h1>
+  <p>Pott — APE Studios</p>
+</div></header>
+<main>
+<p><strong>Effective date:</strong> 26 November 2026<br>
+<strong>Developer:</strong> APE Studios, operated by Isabel Maister<br>
+<strong>Contact:</strong> <a href="mailto:apestudios.io@gmail.com">apestudios.io@gmail.com</a><br>
+<strong>Published at:</strong> <a href="https://apestudios.app/pott/privacy/">https://apestudios.app/pott/privacy/</a></p>
+
+<p>Pott is a fines and kitty ledger for amateur sports teams. The team's
+treasurer keeps the list of fines, dues, payments and expenses on an
+iPhone; players see their own balance through a web link or in the app.</p>
+
+<p>The short version: <strong>Pott never holds, collects or moves money.</strong>
+It has no payment buttons, asks for no bank details and links to no
+payment app. "Cash", "Tikkie" and "Bank" are only labels the treasurer
+puts on an entry. What Pott stores is the team's ledger, so the treasurer
+can keep it on more than one phone and players can see their own part.
+There is no advertising and no tracking, and we sell nothing to anyone.</p>
+
+<h2>Who is who</h2>
+<ul>
+<li><strong>The treasurer</strong> sets up the team and signs in with Apple. This
+  is the only account in Pott.</li>
+<li><strong>Players</strong> never make an account. They open the team's link in a
+  browser, or join in the Pott app by picking their name.</li>
+</ul>
+
+<div class="callout" id="team-data">
+<h2>The team's ledger</h2>
+<p>When the treasurer saves the team, the app sends it to our database so it
+is safe, works on a second phone and can be shown to players. It holds:</p>
+<ul>
+<li>the team name, club name (if given), sport, colour and season;</li>
+<li><strong>player names, as the treasurer types them</strong> (a first name or
+  nickname is enough), and whether a player is hidden or on the waiting
+  list;</li>
+<li>the team's fines list (names and amounts);</li>
+<li>every entry: fines, dues, payments (with the label cash, Tikkie, bank
+  or other), expenses (with the description and category the treasurer
+  types), and corrections. Entries are never changed afterwards; a
+  correction is a new entry, so the ledger stays honest;</li>
+<li>"I paid" messages from players: which player, the amount that was open
+  and the label they chose;</li>
+<li>the player link and team code, which the treasurer can replace at any
+  time (the old link then stops working).</li>
+</ul>
+<p>A receipt photo added to an expense stays on the phone; it is not
+uploaded. The phone also keeps its own copy of the team, so the app works
+offline and sends what is waiting when it is back online.</p>
+<p><strong>Player names belong to the team.</strong> The treasurer decides which
+names go in and can rename or hide a player at any time. A player who
+wants their name changed or removed can ask the treasurer, or write to us
+and we will replace it.</p>
+</div>
+
+<h2>Sign in with Apple (treasurer)</h2>
+<p>The treasurer signs in with Apple when the team is first saved. Apple
+gives us a stable user ID for the account and, the first time, the first
+name the treasurer chooses to share. <strong>Pott does not ask Apple for the
+email address.</strong> The first name is stored with the team and shown to
+players ("Pay Mark the usual way"). The sign-in session is kept in the
+iPhone's Keychain.</p>
+
+<h2>Players</h2>
+<p><strong>The web link</strong> (apestudios.app/pott/#…): the team's link code sits
+after the # in the address, so it never reaches a server log. The page
+asks our server for that team's view, shows the player only their own
+balance and items, plus the team's pot and what it was spent on (never
+another player's amount), and remembers the last view and the chosen name
+in the browser's local storage on that device. "I paid" sends a message to
+the treasurer; it books nothing. No cookies, no account, no tracking.</p>
+<p><strong>The app</strong>: a player who joins in the Pott app gets a random,
+anonymous ID from our database, bound to the name they pick. If they say
+yes to notifications, the phone's Apple push token is stored with that
+ID. The camera is used only to scan the team's QR code, and the image is
+not kept. The treasurer can undo a join at any time.</p>
+
+<h2>How the app is used (app events)</h2>
+<p>The app sends short records of what happens in it to our database, in
+small batches (they wait on the phone while it is offline). Each record
+holds:</p>
+<ul>
+<li><strong>What happened</strong>: for example "opened Home", "went to the next
+  onboarding step", "finished onboarding with 18 players", "gave a fine to
+  2 players", "recorded a payment (label Tikkie)", "recorded an expense
+  (with or without receipt)", "shared the player link", "opened or closed
+  the subscription screen", "started a purchase or trial", "tapped Restore",
+  "a player joined", "a player said they paid", "answered the notification
+  question", "deleted the account". Only names of screens and steps,
+  counts and labels like these.</li>
+<li><strong>Technical context</strong>: the app version and build, the iOS
+  version, the iPhone model, the time, and two random IDs the app makes
+  itself: one for this install and one for each time the app is opened.</li>
+</ul>
+<p>These records <strong>never contain a name, an amount, a team, a player or
+an account ID, or anything typed in</strong>. The install ID is not linked to
+the treasurer's account, to a team or to RevenueCat's ID, and a reinstall
+makes a new one. Our server sees the IP address any internet request
+carries; it is not stored with the records.</p>
+<p><strong>Why:</strong> to find problems and see which parts of Pott are used,
+so we know what to improve. Not for advertising, not sold, not combined
+with other companies' data. <strong>How long:</strong> two years, then they are
+deleted automatically.</p>
+
+<h2>Subscriptions (Team Pro, Club)</h2>
+<p>Team Pro and Club are optional. Apple takes the payment through the
+Apple ID; we never see a card or the Apple ID. To show prices, check
+whether a plan is active and restore it, the app uses
+<strong>RevenueCat</strong>, which acts on our behalf. RevenueCat receives a random
+ID the app creates, the app version, device model, iOS version, language,
+App Store country and currency, the IP address any request carries, and,
+when a plan is bought or restored, Apple's purchase record (plan, price,
+trial and renewal dates, transaction IDs). When the treasurer buys a plan,
+the team's ID is added so the plan follows the team. Used only to unlock
+and restore plans and for our sales totals. RevenueCat's policy:
+<a href="https://www.revenuecat.com/privacy/">https://www.revenuecat.com/privacy/</a>.</p>
+
+<h2>Deleting your account</h2>
+<p><strong>Treasurer:</strong> Pott → Settings → Delete account. This deletes, at
+once and for everyone, your account and every team you own: the players,
+the fines list, every entry and every "I paid" message. The player link and
+team code stop working, and the app on your phone starts over as new.
+Database backups kept by our host roll over and no longer contain it within
+30 days. <strong>Deleting the account does not cancel a subscription</strong>;
+Apple holds it, so cancel it in Settings → your name → Subscriptions. The
+subscription record at RevenueCat is deleted on request (see Your
+rights).</p>
+<p><strong>Player:</strong> deleting the app removes the player's view from the
+phone; the treasurer can undo the join, which unbinds the anonymous ID from
+the name. The player's entries stay in the team's ledger, because they are
+the team's records.</p>
+<p>Without deletion, the team's data stays as long as the treasurer keeps
+the account.</p>
+
+<h2>If you are in the EEA, the UK or Switzerland</h2>
+<p>We (APE Studios, operated by Isabel Maister) are the controller of the
+account, the team data, the app events and the subscription record.
+Our processors: <strong>Supabase</strong> stores the database in the EU
+(Frankfurt); <strong>RevenueCat</strong> processes the subscription record in the
+United States under its data processing terms and the EU Standard
+Contractual Clauses; <strong>Apple</strong> provides Sign in with Apple, push
+notifications and the App Store.</p>
+<p>Legal bases: for the treasurer's account and the team's ledger,
+performing the service the treasurer asked for (contract). For player
+names entered by the treasurer, the team's legitimate interest in keeping
+its own kitty, limited to a name and the team's entries. For app events,
+our legitimate interest in fixing and improving the app, with records that
+carry no name or amount. For the subscription record, the contract and our
+legitimate interest in sales totals. You may object, ask for access,
+correction or deletion, and complain to your data protection authority (in
+the Netherlands: the Autoriteit Persoonsgegevens).</p>
+
+<h2>What Pott deliberately does not do</h2>
+<ul>
+<li><strong>No money.</strong> No payments, no payment links, no IBAN, no bank connection.</li>
+<li><strong>No email address.</strong> Not asked from Apple, not asked from players.</li>
+<li><strong>No player accounts.</strong> No sign-up, no password, no profile.</li>
+<li><strong>No other player's amounts</strong> on a player's link or in a player's app.</li>
+<li><strong>No advertising, no tracking, no advertising ID, no data brokers.</strong></li>
+<li><strong>No location, contacts or photo library access.</strong> A receipt is picked with the iOS photo picker, which needs no permission, and stays on the phone.</li>
+</ul>
+
+<h2>Permissions</h2>
+<ul>
+<li><strong>Camera</strong>: only when a player taps to scan the team's QR code.</li>
+<li><strong>Notifications</strong>: asked in context (a player who wants a heads-up on a new fine; a treasurer whose free trial is about to end). Declining changes nothing else.</li>
+</ul>
+
+<h2>Children</h2>
+<p>The treasurer must be an adult. Pott is not directed at children. A
+youth team's treasurer may enter young players' first names; Pott asks for
+nothing else about them, and players need no account.</p>
+
+<h2>Your rights</h2>
+<p>Write to <a href="mailto:apestudios.io@gmail.com">apestudios.io@gmail.com</a>
+to see, correct or delete what we hold. A treasurer can delete everything
+in the app. For a player name, tell us the team and the name. For the
+subscription record, send the order ID from Apple's receipt email and we
+will ask RevenueCat to show or delete it. App events are not linked to
+anyone, so we cannot find a person's events; a reinstall starts a new
+random ID.</p>
+
+<h2>Changes</h2>
+<p>Material changes to this policy will be posted here with a new effective
+date and, where required, announced in the app or its store listing.</p>
+
+<h2>Contact</h2>
+<p><a href="mailto:apestudios.io@gmail.com">apestudios.io@gmail.com</a></p>
+</main>
+<footer><a href="../terms/">Terms of Use</a> · <a href="../support/">Support</a> · © 2026 APE Studios · apestudios.io@gmail.com</footer>
+</body>
+</html>
