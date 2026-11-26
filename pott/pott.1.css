@@ -1,0 +1,117 @@
+/* Pott player page (APE-Studio/pott#10). Tokens follow the Pott design kit:
+   dark first, the team colour as a field at the top, big tabular numbers. */
+:root {
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Inter", system-ui, "Segoe UI", Roboto, sans-serif;
+  --bg: #000000; --bg2: #0B0B0D; --card: #1C1C1E; --card2: #2C2C2E; --card3: #3A3A3C;
+  --label: #FFFFFF; --label2: #AEAEB2; --label3: #8E8E93; --sep: #38383A;
+  --open: #FF9F0A; --paid: #30D158; --credit: #64D2FF; --err: #FF6961; --link: #0A84FF;
+  --team: #C8372A; --team-ink: #FFFFFF;
+  --r-card: 22px;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #F2F2F7; --bg2: #FFFFFF; --card: #FFFFFF; --card2: #F2F2F7; --card3: #E5E5EA;
+    --label: #000000; --label2: #3C3C43; --label3: #6C6C70; --sep: #D1D1D6;
+    --open: #C45A00; --paid: #1E7F3A; --credit: #0063A6; --err: #C4281C; --link: #0062CC;
+    color-scheme: light;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--bg);
+  color: var(--label);
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+p, h1, h2 { margin: 0; }
+button { font: inherit; color: inherit; cursor: pointer; }
+
+/* The team colour is a field, not a stripe. */
+.glow {
+  position: absolute; left: 0; right: 0; top: 0; height: 360px; pointer-events: none;
+  background: linear-gradient(180deg,
+    color-mix(in srgb, var(--team) 62%, #000) 0%,
+    color-mix(in srgb, var(--team) 28%, #000) 55%,
+    transparent 100%);
+}
+@media (prefers-color-scheme: light) {
+  .glow { background: linear-gradient(180deg, color-mix(in srgb, var(--team) 30%, #fff) 0%, transparent 100%); }
+}
+.glow[hidden] { display: none; }
+
+.wrap {
+  position: relative;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: max(20px, env(safe-area-inset-top)) 16px max(40px, env(safe-area-inset-bottom));
+  display: flex; flex-direction: column; gap: 12px;
+}
+
+/* Type */
+.title2 { font: 700 1.375rem/1.2 var(--font); letter-spacing: -.015em; }
+.h3 { font: 600 1.0625rem/1.3 var(--font); }
+.sub { font: 400 .9375rem/1.4 var(--font); color: var(--label2); }
+.foot { font: 400 .8125rem/1.35 var(--font); color: var(--label3); }
+.eyebrow { font: 600 .8125rem/1.2 var(--font); letter-spacing: .06em; text-transform: uppercase; color: var(--label); }
+.hero { display: block; font: 800 4rem/1 var(--font); letter-spacing: -.045em; font-variant-numeric: tabular-nums; margin-top: 4px; }
+.amt { font: 600 1.0625rem/1 var(--font); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.amt.big { font-size: 1.5rem; display: block; margin-top: 6px; letter-spacing: -.02em; }
+.open { color: var(--open); } .paid { color: var(--paid); } .credit { color: var(--credit); } .err { color: var(--err); }
+
+/* Blocks */
+.head { display: flex; align-items: center; gap: 10px; padding: 2px 4px; }
+.head .t { font: 600 .9375rem/1.25 var(--font); }
+.head .s { font: 400 .8125rem/1.3 var(--font); color: var(--label2); }
+.crest {
+  width: 36px; height: 36px; border-radius: 11px; flex: none;
+  background: var(--team); color: var(--team-ink);
+  display: flex; align-items: center; justify-content: center;
+  font: 800 .75rem/1 var(--font); letter-spacing: -.02em;
+}
+.crest.lg { width: 72px; height: 72px; border-radius: 22px; font-size: 1.625rem; }
+.balance { padding: 8px 4px 0; }
+.card { background: var(--card); border-radius: var(--r-card); padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+.list { background: var(--card); border-radius: var(--r-card); overflow: hidden; list-style: none; margin: 0; padding: 0; }
+.li { display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 10px 16px; border-top: .5px solid var(--sep); width: 100%; text-align: left; background: none; border-left: 0; border-right: 0; border-bottom: 0; }
+.li:first-child { border-top: 0; }
+button.li:active { background: var(--card2); }
+.li .grow { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.li .t { font: 500 1.0625rem/1.25 var(--font); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.li .s { font: 400 .8125rem/1.3 var(--font); color: var(--label2); }
+.li .t.struck { text-decoration: line-through; color: var(--label3); }
+.chev { color: var(--label3); font: 600 .9375rem/1 var(--font); }
+.av { width: 36px; height: 36px; border-radius: 18px; background: var(--card3); display: flex; align-items: center; justify-content: center; font: 600 .875rem/1 var(--font); flex: none; }
+.av.lg { width: 72px; height: 72px; border-radius: 36px; }
+.grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.section { padding: 4px 4px 0; }
+.center { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; }
+.state { min-height: 70dvh; justify-content: center; padding: 0 10px; }
+.pick { padding: 26px 8px 6px; }
+.rowx { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.banner { background: var(--card2); border-radius: 16px; padding: 12px 14px; font: 500 .9375rem/1.35 var(--font); }
+
+/* Controls */
+.btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 54px; border-radius: 27px; border: 0; width: 100%;
+  font: 600 1.0625rem/1.2 var(--font); background: var(--team); color: var(--team-ink); padding: 0 20px;
+}
+.btn.sec { background: var(--card2); color: var(--label); }
+.btn.ghost { background: transparent; color: var(--link); min-height: 44px; }
+.btn[disabled] { opacity: .5; cursor: default; }
+.chip { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 22px; border: 0; background: var(--card2); font: 600 .9375rem/1 var(--font); }
+.chip[aria-pressed="true"] { background: var(--team); color: var(--team-ink); }
+.ico { width: 22px; height: 22px; flex: none; }
+:focus-visible { outline: 3px solid var(--link); outline-offset: 2px; }
+
+.spinner { width: 28px; height: 28px; border-radius: 50%; border: 3px solid var(--card3); border-top-color: var(--label2); animation: spin .9s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .spinner { animation: none; } }
+.sub.strong { color: var(--label); }
+.tc { text-align: center; padding-top: 8px; }
+.vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

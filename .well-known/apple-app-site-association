@@ -1,0 +1,14 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["5Q2J6THTWZ.com.apestudios.pott"],
+        "components": [
+          { "/": "/pott/privacy/*", "exclude": true, "comment": "Pott privacy page stays in Safari" },
+          { "/": "/pott/terms/*", "exclude": true, "comment": "Pott terms page stays in Safari" },
+          { "/": "/pott/*", "comment": "Player link: /pott/#<team token>" }
+        ]
+      }
+    ]
+  }
+}

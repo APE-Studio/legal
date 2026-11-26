@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pott — de teampot</title>
+<!-- Player page (APE-Studio/pott#10). The team link token sits in the URL
+     fragment (#...), so it never reaches a server log or a referrer. -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src https://ljjxnjqsggaavlqezobv.supabase.co; base-uri 'none'; form-action 'none'">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#000000">
+<meta name="format-detection" content="telephone=no">
+<link rel="icon" href="/assets/studio/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/pott/pott.1.css">
+<script src="/pott/pott.1.js" defer></script>
+</head>
+<body>
+<div class="glow" aria-hidden="true"></div>
+<main id="app" class="wrap" aria-live="polite">
+  <div class="center state" id="boot">
+    <div class="spinner" aria-hidden="true"></div>
+  </div>
+  <noscript>
+    <div class="center state">
+      <p class="title2">Zet JavaScript aan</p>
+      <p class="sub">Deze pagina heeft JavaScript nodig om je stand te laten zien.</p>
+    </div>
+  </noscript>
+</main>
+</body>
+</html>
