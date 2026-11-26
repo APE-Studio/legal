@@ -6,6 +6,7 @@
         "components": [
           { "/": "/pott/privacy/*", "exclude": true, "comment": "Pott privacy page stays in Safari" },
           { "/": "/pott/terms/*", "exclude": true, "comment": "Pott terms page stays in Safari" },
+          { "/": "/pott/support/*", "exclude": true, "comment": "Pott support page stays in Safari" },
           { "/": "/pott/*", "comment": "Player link: /pott/#<team token>" }
         ]
       }
