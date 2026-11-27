@@ -6,6 +6,10 @@
 // with the last known view (localStorage). Everything shown comes from
 // team-view, which never returns another player's open amount.
 //
+// A player not on the list writes their name and waits for the treasurer
+// (`join-request`, APE-Studio/pott#81); once approved, the page shows them
+// as if they had tapped their name.
+//
 // "Ik heb betaald" only tells the treasurer; Pott never moves money, so
 // this page has no payment buttons, IBAN or payment links. The player says
 // how much: everything open, half, or another amount up to what is open
@@ -67,6 +71,21 @@
       who_sub: "Tik op je naam, dan zie je wat je nog moet. Dit onthoudt je telefoon.",
       no_players: "De penningmeester heeft nog geen spelers toegevoegd.",
       pot_only: "Alleen de teampot bekijken",
+      not_listed: "Sta je er niet bij? Schrijf je naam",
+      write_title: "Hoe heet je?",
+      write_sub: "{treasurer} ziet het en laat je erin.",
+      your_name: "Je naam",
+      ask_join: "Vraag om erbij te komen",
+      cancel: "Annuleren",
+      waiting_title: "Wachten op {treasurer}",
+      waiting_sub: "Je vroeg om bij {team} te komen als {name}. Zodra {treasurer} je erin laat, zie je hier je stand.",
+      declined_title: "{treasurer} heeft je niet toegelaten",
+      declined_sub: "Kies je naam als die nu op de lijst staat, of vraag het {treasurer} in de groepsapp.",
+      back_list: "Terug naar de lijst",
+      other_name: "Kies een andere naam",
+      name_invalid: "Schrijf je naam, maximaal 40 tekens.",
+      too_many: "{treasurer} heeft veel aanmeldingen openstaan. Probeer het later nog eens.",
+      ask_failed: "Versturen lukte niet. Probeer het zo nog eens.",
       pick_name: "Kies je naam",
       not_you: "Niet {name}? Kies een andere naam",
       dead_title: "Deze link werkt niet meer",
@@ -127,6 +146,21 @@
       who_sub: "Tap your name to see what you still owe. Your phone remembers it.",
       no_players: "The treasurer hasn't added any players yet.",
       pot_only: "Just view the team kitty",
+      not_listed: "Not on the list? Write your name",
+      write_title: "What's your name?",
+      write_sub: "{treasurer} sees it and lets you in.",
+      your_name: "Your name",
+      ask_join: "Ask to join",
+      cancel: "Cancel",
+      waiting_title: "Waiting for {treasurer}",
+      waiting_sub: "You asked to join {team} as {name}. Once {treasurer} lets you in, you see your balance here.",
+      declined_title: "{treasurer} didn't let you in",
+      declined_sub: "Pick your name if it's on the list now, or ask {treasurer} in the group chat.",
+      back_list: "Back to the list",
+      other_name: "Pick another name",
+      name_invalid: "Write your name, up to 40 letters.",
+      too_many: "{treasurer} has a lot of requests to go through. Try again later.",
+      ask_failed: "That didn't send. Try again in a moment.",
       pick_name: "Pick your name",
       not_you: "Not {name}? Pick another name",
       dead_title: "This link no longer works",
@@ -187,6 +221,21 @@
       who_sub: "Tipp auf deinen Namen, dann siehst du, was du noch zahlen musst. Dein Handy merkt es sich.",
       no_players: "Die Kasse hat noch keine Spieler hinzugefügt.",
       pot_only: "Nur die Kasse ansehen",
+      not_listed: "Nicht auf der Liste? Schreib deinen Namen",
+      write_title: "Wie heißt du?",
+      write_sub: "{treasurer} sieht es und nimmt dich auf.",
+      your_name: "Dein Name",
+      ask_join: "Beitritt anfragen",
+      cancel: "Abbrechen",
+      waiting_title: "Warten auf {treasurer}",
+      waiting_sub: "Du hast gefragt, ob du als {name} zu {team} kommen kannst. Sobald {treasurer} dich aufnimmt, siehst du hier deinen Stand.",
+      declined_title: "{treasurer} hat dich nicht aufgenommen",
+      declined_sub: "Wähl deinen Namen, falls er jetzt auf der Liste steht, oder frag {treasurer} im Gruppenchat.",
+      back_list: "Zurück zur Liste",
+      other_name: "Anderen Namen wählen",
+      name_invalid: "Schreib deinen Namen, höchstens 40 Zeichen.",
+      too_many: "{treasurer} hat viele offene Anfragen. Versuch es später noch mal.",
+      ask_failed: "Senden hat nicht geklappt. Versuch es gleich noch mal.",
       pick_name: "Namen wählen",
       not_you: "Nicht {name}? Anderen Namen wählen",
       dead_title: "Dieser Link funktioniert nicht mehr",
@@ -388,6 +437,8 @@
     applyTeamColour(view.team.color);
     glow.hidden = false;
     var picked = view.me;
+    if (!picked && stored.request) return renderWaiting(stored.request);
+    if (!picked && ui.writing) return renderWrite();
     if (!picked && !stored.team_only) return renderPicker();
     var nodes = [];
     if (offlineAt) {
@@ -420,8 +471,114 @@
         el("p", { class: "sub", text: t("who_sub") })
       ]),
       list,
+      // Not on the list (APE-Studio/pott#81): write it, the treasurer approves.
+      el("button", { class: "btn sec", type: "button", onclick: function () { ui.writing = true; ui.msg = null; render(); }, text: t("not_listed") }),
       el("button", { class: "btn ghost", type: "button", onclick: potOnly, text: t("pot_only") })
     ]);
+  }
+
+  // ------------------------------------------------- join request (pott#81)
+  // The browser keeps a random secret with the request; the server stores
+  // only its hash, so only this browser can read the request back.
+  function trName() { return treasurer() || t("the_treasurer"); }
+
+  function renderWrite() {
+    var input = el("input", { class: "field", id: "jr-name", type: "text", autocomplete: "name", maxlength: "40",
+                              placeholder: t("your_name"), "aria-label": t("your_name") });
+    input.value = ui.nameText || "";
+    input.addEventListener("input", function () { ui.nameText = input.value; });
+    input.addEventListener("keydown", function (e) { if (e.key === "Enter") sendRequest(); });
+    show([
+      el("div", { class: "center pick" }, [
+        el("span", { class: "crest lg", "aria-hidden": "true", text: crestText(view.team.name) }),
+        el("p", { class: "foot", text: view.team.name }),
+        el("h1", { class: "title2", text: t("write_title") }),
+        el("p", { class: "sub", text: t("write_sub", { treasurer: trName() }) })
+      ]),
+      input,
+      ui.msg ? el("p", { class: "sub", role: "alert", text: ui.msg }) : null,
+      el("button", { class: "btn", type: "button", onclick: sendRequest, disabled: ui.sending ? "" : null,
+                     text: ui.sending ? t("sending") : t("ask_join") }),
+      el("button", { class: "btn ghost", type: "button", onclick: function () { ui.writing = false; ui.msg = null; render(); }, text: t("cancel") })
+    ]);
+    if (!ui.sending) input.focus();
+  }
+
+  function renderWaiting(req) {
+    var declined = req.status === "declined";
+    show([
+      el("div", { class: "center pick" }, [
+        el("span", { class: "crest lg", "aria-hidden": "true", text: crestText(view.team.name) }),
+        el("p", { class: "foot", text: view.team.name }),
+        el("h1", { class: "title2", text: t(declined ? "declined_title" : "waiting_title", { treasurer: trName() }) }),
+        el("p", { class: "sub", text: declined
+          ? t("declined_sub", { treasurer: trName() })
+          : t("waiting_sub", { treasurer: trName(), team: view.team.name, name: req.name }) })
+      ]),
+      el("button", { class: declined ? "btn" : "btn ghost", type: "button", onclick: dropRequest,
+                     text: t(declined ? "back_list" : "other_name") })
+    ]);
+  }
+
+  function newSecret() {
+    var b = new Uint8Array(32); crypto.getRandomValues(b);
+    return btoa(String.fromCharCode.apply(null, b)).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+  }
+
+  function sendRequest() {
+    var name = String(ui.nameText || "").trim();
+    if (ui.sending || !view) return;
+    if (!name || name.length > 40) { ui.msg = t("name_invalid"); return render(); }
+    var secret = (stored.request && stored.request.secret) || newSecret();
+    ui.sending = true; ui.msg = null; render();
+    post("join-request", { action: "request", token: token, name: name, secret: secret })
+      .then(function (r) {
+        ui.sending = false;
+        if (r.status === 200 && r.data && r.data.request) {
+          stored.request = { id: r.data.request.id, name: r.data.request.name, status: r.data.request.status, secret: secret };
+          stored.view = view; save(token, stored);
+          ui.writing = false; ui.nameText = "";
+        } else if (r.status === 404) {
+          return dead();
+        } else if (r.status === 422) {
+          ui.msg = t("name_invalid");
+        } else if (r.status === 429) {
+          ui.msg = t("too_many", { treasurer: trName() });
+        } else {
+          ui.msg = t("ask_failed");
+        }
+        render();
+      })
+      .catch(function () { ui.sending = false; ui.msg = t("ask_failed"); render(); });
+  }
+
+  // Approved: this browser is that player from now on, as if the name was tapped.
+  function checkRequest() {
+    var req = stored.request;
+    if (!req || req.status !== "pending") return;
+    post("join-request", { action: "status", token: token, request_id: req.id, secret: req.secret })
+      .then(function (r) {
+        if (stored.request !== req) return;
+        if (r.status === 200 && r.data && r.data.request) {
+          var got = r.data.request;
+          if (got.status === "approved" && got.member_id) {
+            delete stored.request;
+            return choose(got.member_id);
+          }
+          req.status = got.status;
+          save(token, stored);
+          render();
+        } else if (r.status === 404 && r.data && r.data.error === "request_unknown") {
+          dropRequest();
+        }
+      })
+      .catch(function () { /* offline: try again on the next visit */ });
+  }
+
+  function dropRequest() {
+    delete stored.request;
+    save(token, stored);
+    render();
   }
 
   function renderPotHero() {
@@ -635,7 +792,7 @@
     resetUi();
     if (view) { view.me = null; renderPicker(); } else start();
   }
-  function resetUi() { ui = { step: 0, method: "tikkie", choice: "all", otherText: "", clientId: null, sending: false, msg: null, showAll: false, sent: null }; }
+  function resetUi() { ui = { step: 0, method: "tikkie", choice: "all", otherText: "", clientId: null, sending: false, msg: null, showAll: false, sent: null, writing: false, nameText: "" }; }
 
   function sendReport() {
     if (ui.sending || !view || !view.me) return;
@@ -681,8 +838,9 @@
         offlineAt = null;
         if (view.member_unknown) { stored.member_id = null; }
         stored.view = view; stored.saved_at = view.as_of;
-        if (stored.member_id || stored.team_only) save(token, stored);
+        if (stored.member_id || stored.team_only || stored.request) save(token, stored);
         render();
+        checkRequest();
       } else if (r.status === 404) {
         dead();
       } else if (stored.view) {
@@ -714,5 +872,7 @@
 
   window.addEventListener("hashchange", start);
   window.addEventListener("online", function () { if (offlineAt) fetchView(); });
+  // Back on the page while waiting for the treasurer: ask again.
+  document.addEventListener("visibilitychange", function () { if (!document.hidden) checkRequest(); });
   start();
 })();
