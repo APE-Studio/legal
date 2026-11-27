@@ -115,3 +115,10 @@ button.li:active { background: var(--card2); }
 .sub.strong { color: var(--label); }
 .tc { text-align: center; padding-top: 8px; }
 .vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.chip[disabled] { opacity: .4; cursor: default; }
+.field {
+  width: 100%; min-height: 50px; border-radius: 14px; border: 0; padding: 0 16px;
+  background: var(--card2); color: var(--label);
+  font: 600 1.25rem/1 var(--font); font-variant-numeric: tabular-nums;
+}
+.field::placeholder { color: var(--label3); }
