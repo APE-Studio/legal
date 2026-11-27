@@ -7,7 +7,9 @@
 // team-view, which never returns another player's open amount.
 //
 // "Ik heb betaald" only tells the treasurer; Pott never moves money, so
-// this page has no payment buttons, IBAN or payment links.
+// this page has no payment buttons, IBAN or payment links. The player says
+// how much: everything open, half, or another amount up to what is open
+// (APE-Studio/pott#54). Half is rounded down to the cent, as in the app.
 //
 // All text from the server is set with textContent, never as HTML.
 
@@ -32,6 +34,14 @@
       the_treasurer: "de penningmeester",
       i_paid: "Ik heb betaald",
       how_paid: "Hoe heb je betaald?",
+      what_paid: "Wat heb je betaald?",
+      amt_all: "Alles {amount}", amt_half: "Helft {amount}", amt_other: "Ander bedrag",
+      amount: "Bedrag",
+      amt_over: "Je moet nog {amount}. Meld dat of minder.",
+      amt_part: "Een deel betaald? Meld wat je betaalde; de rest blijft open.",
+      tell_amt: "Laat {treasurer} weten: {amount}",
+      tell_amt_generic: "Laat de penningmeester weten: {amount}",
+      amt_changed: "Dat lukte niet: je stand is net veranderd. Kijk het bedrag na en probeer het opnieuw.",
       cash: "Contant", tikkie: "Tikkie", bank: "Bank",
       selected: "geselecteerd",
       tell: "Laat het {treasurer} weten",
@@ -84,6 +94,14 @@
       the_treasurer: "the treasurer",
       i_paid: "I've paid",
       how_paid: "How did you pay?",
+      what_paid: "What did you pay?",
+      amt_all: "Everything {amount}", amt_half: "Half {amount}", amt_other: "Other amount",
+      amount: "Amount",
+      amt_over: "You owe {amount}. Report that or less.",
+      amt_part: "Only paid part? Report what you paid; the rest stays open.",
+      tell_amt: "Let {treasurer} know: {amount}",
+      tell_amt_generic: "Let the treasurer know: {amount}",
+      amt_changed: "That didn't go through: your balance just changed. Check the amount and try again.",
       cash: "Cash", tikkie: "Tikkie", bank: "Bank",
       selected: "selected",
       tell: "Let {treasurer} know",
@@ -136,6 +154,14 @@
       the_treasurer: "der Kasse",
       i_paid: "Ich habe bezahlt",
       how_paid: "Wie hast du bezahlt?",
+      what_paid: "Was hast du bezahlt?",
+      amt_all: "Alles {amount}", amt_half: "Hälfte {amount}", amt_other: "Anderer Betrag",
+      amount: "Betrag",
+      amt_over: "Du schuldest {amount}. Melde das oder weniger.",
+      amt_part: "Nur einen Teil bezahlt? Melde, was du bezahlt hast; der Rest bleibt offen.",
+      tell_amt: "{treasurer} Bescheid geben: {amount}",
+      tell_amt_generic: "Der Kasse Bescheid geben: {amount}",
+      amt_changed: "Das hat nicht geklappt: dein Stand hat sich gerade geändert. Prüf den Betrag und versuch es noch einmal.",
       cash: "Bar", tikkie: "Tikkie", bank: "Überweisung",
       selected: "ausgewählt",
       tell: "{treasurer} Bescheid sagen",
@@ -312,7 +338,7 @@
   var stored = {};
   var view = null;
   var offlineAt = null;
-  var ui = { step: 0, method: "tikkie", clientId: null, sending: false, msg: null, showAll: false, sent: null };
+  var ui = { step: 0, method: "tikkie", choice: "all", otherText: "", clientId: null, sending: false, msg: null, showAll: false, sent: null };
 
   function show(nodes) {
     app.textContent = "";
@@ -435,17 +461,7 @@
           el("button", { class: "btn", type: "button", onclick: function () { ui.step = 1; ui.clientId = uuid(); render(); }, text: t("i_paid") })
         ]);
       } else {
-        card = el("div", { class: "card" }, [
-          el("h2", { class: "h3", text: t("how_paid") }),
-          el("div", { class: "rowx", role: "group", "aria-label": t("how_paid") }, ["cash", "tikkie", "bank"].map(function (m) {
-            return el("button", { class: "chip", type: "button", "aria-pressed": ui.method === m ? "true" : "false",
-              onclick: function () { ui.method = m; render(); }, text: t(m) });
-          })),
-          el("button", { class: "btn", type: "button", disabled: ui.sending, onclick: sendReport,
-            text: ui.sending ? t("sending") : (tr ? t("tell", { treasurer: tr }) : t("tell_generic")) }),
-          ui.msg ? el("p", { class: "sub err", role: "alert", text: ui.msg }) : null,
-          el("p", { class: "foot", text: t("only_note") })
-        ]);
+        card = reportCard(me, tr);
       }
     } else if (me.open_cents <= 0) {
       card = el("div", { class: "card" }, [el("p", { class: "sub", text: t("all_paid") })]);
@@ -506,6 +522,85 @@
     return out;
   }
 
+  // "I've paid", step 2: how much, how, then the heads-up. The amount on
+  // the button is the amount sent.
+  function reportCard(me, tr) {
+    var cur = view.team.currency;
+    var open = me.open_cents;
+    var half = halfCents(open);
+    if (ui.choice === "half" && half <= 0) ui.choice = "all";
+    var chip = function (key, label, disabled) {
+      return el("button", { class: "chip", type: "button", "aria-pressed": ui.choice === key ? "true" : "false", disabled: disabled,
+        onclick: function () { ui.choice = key; ui.msg = null; render(); if (key === "other") focusAmount(); }, text: label });
+    };
+    var input = null, hint = null;
+    if (ui.choice === "other") {
+      input = el("input", { class: "field", id: "amount", type: "text", inputmode: "decimal", autocomplete: "off",
+        placeholder: money(0, cur), value: ui.otherText, "aria-label": t("amount") });
+      hint = el("p", { class: "foot", text: t("amt_part") });
+    }
+    var button = el("button", { class: "btn", type: "button", onclick: sendReport });
+    var paint = function () {
+      var cents = chosenCents(open);
+      var ok = cents > 0 && cents <= open;
+      button.disabled = ui.sending || !ok;
+      button.textContent = ui.sending ? t("sending")
+        : ok ? (tr ? t("tell_amt", { treasurer: tr, amount: money(cents, cur) }) : t("tell_amt_generic", { amount: money(cents, cur) }))
+        : (tr ? t("tell", { treasurer: tr }) : t("tell_generic"));
+      if (hint) {
+        var over = cents > open;
+        hint.textContent = over ? t("amt_over", { amount: money(open, cur) }) : t("amt_part");
+        hint.className = over ? "foot err" : "foot";
+      }
+    };
+    // Typing updates the button in place, so the field keeps its focus.
+    if (input) input.addEventListener("input", function () { ui.otherText = input.value; paint(); });
+    paint();
+    return el("div", { class: "card" }, [
+      el("h2", { class: "h3", text: t("what_paid") }),
+      el("div", { class: "rowx", role: "group", "aria-label": t("what_paid") }, [
+        chip("all", t("amt_all", { amount: money(open, cur) })),
+        chip("half", t("amt_half", { amount: money(half, cur) }), half <= 0),
+        chip("other", t("amt_other"))
+      ]),
+      input, hint,
+      el("h2", { class: "h3", text: t("how_paid") }),
+      el("div", { class: "rowx", role: "group", "aria-label": t("how_paid") }, ["cash", "tikkie", "bank"].map(function (m) {
+        return el("button", { class: "chip", type: "button", "aria-pressed": ui.method === m ? "true" : "false",
+          onclick: function () { ui.method = m; render(); }, text: t(m) });
+      })),
+      button,
+      ui.msg ? el("p", { class: "sub err", role: "alert", text: ui.msg }) : null,
+      el("p", { class: "foot", text: t("only_note") })
+    ]);
+  }
+
+  function focusAmount() {
+    var f = document.getElementById("amount");
+    if (f) f.focus();
+  }
+
+  // Half of what is open, rounded down to the cent: half plus what stays
+  // open always equals the open amount (AmountChoice.halfCents in the app).
+  function halfCents(open) { return Math.floor(Math.max(open, 0) / 2); }
+
+  function chosenCents(open) {
+    if (ui.choice === "half") return halfCents(open);
+    if (ui.choice === "other") return parseCents(ui.otherText);
+    return open;
+  }
+
+  // "9,50", "9.50", "€ 9", "1.234,50" → cents; anything else → 0.
+  function parseCents(text) {
+    var s = String(text || "").replace(/[^0-9.,]/g, "");
+    if (!s) return 0;
+    var m = s.match(/^(.*?)[.,](\d{1,2})$/);
+    var whole = (m ? m[1] : s).replace(/[.,]/g, "");
+    var frac = m ? (m[2] + "0").slice(0, 2) : "00";
+    if (!/^\d*$/.test(whole) || whole.length > 7) return 0;
+    return parseInt(whole || "0", 10) * 100 + parseInt(frac, 10);
+  }
+
   // Mid-sentence: "via contant", "via Tikkie" (a brand); German nouns keep their capital.
   function methodName(m) {
     var name = m === "cash" || m === "tikkie" || m === "bank" ? t(m) : t("other");
@@ -540,12 +635,14 @@
     resetUi();
     if (view) { view.me = null; renderPicker(); } else start();
   }
-  function resetUi() { ui = { step: 0, method: "tikkie", clientId: null, sending: false, msg: null, showAll: false, sent: null }; }
+  function resetUi() { ui = { step: 0, method: "tikkie", choice: "all", otherText: "", clientId: null, sending: false, msg: null, showAll: false, sent: null }; }
 
   function sendReport() {
     if (ui.sending || !view || !view.me) return;
+    var cents = chosenCents(view.me.open_cents);
+    if (!(cents > 0 && cents <= view.me.open_cents)) return;
     ui.sending = true; ui.msg = null; render();
-    post("report-payment", { token: token, member_id: view.me.id, method: ui.method, client_id: ui.clientId })
+    post("report-payment", { token: token, member_id: view.me.id, method: ui.method, client_id: ui.clientId, amount_cents: cents })
       .then(function (r) {
         ui.sending = false;
         if (r.status === 200 && r.data && r.data.report) {
@@ -556,6 +653,10 @@
           return dead();
         } else if (r.status === 429) {
           ui.msg = t("rate_limited", { treasurer: treasurer() || t("the_treasurer") });
+        } else if (r.status === 422 && r.data && r.data.error === "amount_invalid") {
+          // What is open changed meanwhile: show the new amount, keep the card open.
+          ui.msg = t("amt_changed"); ui.choice = "all"; ui.clientId = uuid();
+          return fetchView();
         } else if (r.status === 409 || r.status === 422) {
           return fetchView();
         } else {
