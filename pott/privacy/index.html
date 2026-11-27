@@ -46,7 +46,7 @@
 <main>
 <p><em>A Dutch version of this policy is at <a href="nl/">apestudios.app/pott/privacy/nl/</a>. For users in the Netherlands the Dutch text applies; where the two versions differ, the Dutch text prevails.</em></p>
 
-<p><strong>Effective date:</strong> 27 November 2026<br>
+<p><strong>Effective date:</strong> 28 November 2026<br>
 <strong>Developer:</strong> APE Studios, operated by Isabel Maister<br>
 <strong>Contact:</strong> <a href="mailto:apestudios.io@gmail.com">apestudios.io@gmail.com</a><br>
 <strong>Published at:</strong> <a href="https://apestudios.app/pott/privacy/">https://apestudios.app/pott/privacy/</a></p>
@@ -136,7 +136,7 @@ small batches (they wait on the phone while it is offline). Each record
 holds:</p>
 <ul>
 <li><strong>What happened</strong>: for example "opened Home", "went to the next
-  onboarding step", "finished onboarding with 18 players", "gave a fine to
+  onboarding step", "finished onboarding", "gave a fine to
   2 players", "recorded a payment (label Tikkie)", "recorded an expense
   (with or without receipt)", "shared the player link", "opened or closed
   the subscription screen", "started a purchase or trial", "tapped Restore",
@@ -144,7 +144,8 @@ holds:</p>
   question", "deleted the account". Only names of screens and steps,
   counts and labels like these.</li>
 <li><strong>Technical context</strong>: the app version and build, the iOS
-  version, the iPhone model, the time, and two random IDs the app makes
+  version, the iPhone model, whether the app came from the App Store or
+  TestFlight (or is a developer build), the time, and two random IDs the app makes
   itself: one for this install and one for each time the app is opened.</li>
 </ul>
 <p>These records <strong>never contain a name, an amount, a team, a player or
@@ -173,7 +174,10 @@ and restore plans and for our sales totals. RevenueCat's policy:
 <h2>Deleting your account</h2>
 <p><strong>Treasurer:</strong> Pott → Settings → Delete account. This deletes, at
 once and for everyone, your account and every team you own: the players,
-the fines list, every entry and every "I paid" message. The player link and
+the fines list, every entry and every "I paid" message. First, Pott asks
+Apple to sign you in once more: the one-time code Apple gives goes through
+our server to Apple to end Pott's access to your Apple ID ("revoke"). The
+code is not stored. If you close Apple's sheet, nothing is deleted. The player link and
 team code stop working, and the app on your phone starts over as new.
 Database backups kept by our host roll over and no longer contain it within
 30 days. <strong>Deleting the account does not cancel a subscription</strong>;
