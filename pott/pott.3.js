@@ -86,6 +86,7 @@
       name_invalid: "Schrijf je naam, maximaal 40 tekens.",
       too_many: "{treasurer} heeft veel aanmeldingen openstaan. Probeer het later nog eens.",
       ask_failed: "Versturen lukte niet. Probeer het zo nog eens.",
+      signed_up_as: "Aangemeld als {name}",
       pick_name: "Kies je naam",
       not_you: "Niet {name}? Kies een andere naam",
       dead_title: "Deze link werkt niet meer",
@@ -161,6 +162,7 @@
       name_invalid: "Write your name, up to 40 letters.",
       too_many: "{treasurer} has a lot of requests to go through. Try again later.",
       ask_failed: "That didn't send. Try again in a moment.",
+      signed_up_as: "Signed up as {name}",
       pick_name: "Pick your name",
       not_you: "Not {name}? Pick another name",
       dead_title: "This link no longer works",
@@ -236,6 +238,7 @@
       name_invalid: "Schreib deinen Namen, höchstens 40 Zeichen.",
       too_many: "{treasurer} hat viele offene Anfragen. Versuch es später noch mal.",
       ask_failed: "Senden hat nicht geklappt. Versuch es gleich noch mal.",
+      signed_up_as: "Angemeldet als {name}",
       pick_name: "Namen wählen",
       not_you: "Nicht {name}? Anderen Namen wählen",
       dead_title: "Dieser Link funktioniert nicht mehr",
@@ -562,8 +565,10 @@
         if (r.status === 200 && r.data && r.data.request) {
           var got = r.data.request;
           if (got.status === "approved" && got.member_id) {
-            delete stored.request;
-            return choose(got.member_id);
+            choose(got.member_id);
+            stored.given_name = req.name;
+            save(token, stored);
+            return;
           }
           req.status = got.status;
           save(token, stored);
@@ -574,6 +579,12 @@
       })
       .catch(function () { /* offline: try again on the next visit */ });
   }
+
+  // While waiting and on screen, ask every 10 seconds: the treasurer often
+  // says yes right after the scan.
+  setInterval(function () {
+    if (!document.hidden && stored.request && stored.request.status === "pending") checkRequest();
+  }, 10000);
 
   function dropRequest() {
     delete stored.request;
@@ -600,6 +611,10 @@
       el("span", { class: "eyebrow", text: heading }),
       el("span", { class: "hero" + cls, text: amount })
     ]));
+    // The name they wrote stays theirs when the treasurer gave a nickname (pott#81).
+    if (stored.given_name && stored.given_name !== me.name) {
+      out.push(el("p", { class: "foot", text: t("signed_up_as", { name: stored.given_name }) }));
+    }
 
     var tr = treasurer();
     var report = ui.sent || me.report;
