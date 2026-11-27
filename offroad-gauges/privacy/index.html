@@ -231,7 +231,10 @@ identifier as everything above, the next time you have a connection. We
 deliberately do <strong>not</strong> record the error's message text, because an error
 message can quote things you typed, such as the name you gave a trip. The
 report tells us that a release is broken and roughly where; it tells us
-nothing about where you drove.</p>
+nothing about where you drove. The same goes for <strong>errors the app recovers
+from</strong> — prices that would not load, a trip list that could not be saved, a
+share card whose map would not draw: the app records which of these it was
+and an error code, never the error's text.</p>
 
 <h2>What we deliberately do not collect</h2>
 <ul>
