@@ -1,0 +1,54 @@
+body.theme-pott {
+  --bg: #000000;
+  --surface: #1C1C1E;
+  --team: #C8372A;
+  --text: #ffffff;
+  --muted: rgba(255, 255, 255, 0.62);
+  --page-bg: var(--bg);
+  background:
+    radial-gradient(ellipse 70% 45% at 50% 0%, rgba(200, 55, 42, 0.42), transparent 60%),
+    radial-gradient(ellipse 40% 35% at 10% 100%, rgba(200, 55, 42, 0.1), transparent 50%),
+    var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
+}
+
+.theme-pott .landing-stage::before {
+  content: "€ 0,00";
+  position: absolute;
+  right: 3%;
+  bottom: 6%;
+  font-weight: 800;
+  font-size: clamp(3.5rem, 14vw, 10rem);
+  line-height: 0.85;
+  color: #fff;
+  opacity: 0.06;
+  letter-spacing: -0.05em;
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.theme-pott .app-copy h1 {
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.theme-pott .studio-link { color: #FF8A7E; }
+.theme-pott .lede { color: var(--muted); }
+.theme-pott .progress-bar { background: var(--team); }
+
+.theme-pott .points li::before {
+  background: var(--team);
+  opacity: 1;
+}
+
+.theme-pott .legal a,
+.theme-pott .contact a {
+  color: #FF8A7E;
+}
+
+.theme-pott a:focus-visible,
+.theme-pott .btn:focus-visible {
+  outline-color: #FF8A7E;
+}
