@@ -40,7 +40,7 @@
   <p>Pott — APE Studios</p>
 </div></header>
 <main>
-<p><strong>Effective date:</strong> 26 November 2026<br>
+<p><strong>Effective date:</strong> 27 November 2026<br>
 <strong>Developer:</strong> APE Studios, operated by Isabel Maister<br>
 <strong>Contact:</strong> <a href="mailto:apestudios.io@gmail.com">apestudios.io@gmail.com</a><br>
 <strong>Published at:</strong> <a href="https://apestudios.app/pott/privacy/">https://apestudios.app/pott/privacy/</a></p>
@@ -78,8 +78,14 @@ is safe, works on a second phone and can be shown to players. It holds:</p>
   or other), expenses (with the description and category the treasurer
   types), and corrections. Entries are never changed afterwards; a
   correction is a new entry, so the ledger stays honest;</li>
-<li>"I paid" messages from players: which player, the amount that was open
-  and the label they chose;</li>
+<li>"I paid" messages from players: which player, the amount they say
+  they paid (all that was open, half, or another amount) and the label they chose;</li>
+<li>join requests: a player who is not on the team's list can write their
+  own name and ask to join. The name they write is stored with the team.
+  The treasurer approves it (as that name, as a nickname, or as a player
+  already on the list) or declines it. After approval the written name stays
+  on that player, so the player sees what they signed up as. Requests,
+  approved or declined, are deleted with the team;</li>
 <li>the player link and team code, which the treasurer can replace at any
   time (the old link then stops working).</li>
 </ul>
@@ -113,6 +119,10 @@ anonymous ID from our database, bound to the name they pick. If they say
 yes to notifications, the phone's Apple push token is stored with that
 ID. The camera is used only to scan the team's QR code, and the image is
 not kept. The treasurer can undo a join at any time.</p>
+<p><strong>Not on the list</strong>: on the web link or in the app, a player
+whose name is missing can write it and wait for the treasurer. The page or
+app keeps a random code for that request on the device, so it can check
+whether the treasurer has answered.</p>
 
 <h2>How the app is used (app events)</h2>
 <p>The app sends short records of what happens in it to our database, in
